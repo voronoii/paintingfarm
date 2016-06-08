@@ -1,0 +1,137 @@
+
+	<!-- *********************
+		INTRO PAGE TITLE
+	********************** -->
+	<section class="heading-page-section" style="background-image:url('../images/market_header.jpg');">
+		<div class="container">
+			<div class="col-md-12">
+				<h1 class="heading-page-title">마켓</h1>
+				<span class="heading-page-subtitle">당신의 작품을 올리고, 판매하세요!</span>
+			</div>
+		</div>
+	</section>
+	<!-- *********************
+		CONTENT
+	********************** -->
+	<section id="shop" class="content shop">
+		<div class="container">
+			<div class="product-container col-md-9">
+				<div class="product-container-header col-md-12">
+					<div class="product-result left">
+						<%= page_entries_info @markets %>
+					</div>
+					<select name="" id="" class="product-filter right">
+						<option value="">최신순</option>
+						<option value="">낮은 가격순</option>
+						<option value="">높은 가격순</option>
+					</select>
+				</div>
+				
+				<!-- *********************
+						CONTENT
+				********************** -->
+				<div class="blog-articles-masonry-container clearfix ">
+					<!-- 작품들 -->
+					<% @markets.each do |m|%>
+						<article class="blog-article-masonry">	
+								<div class="blog-article-img">
+									<%= image_tag(m.image) %>
+								</div>
+								
+								<a href="/markets/show/<%=m.id%>"><div class="product-cap"></div></a>
+
+								<div class="blog-article-content">
+									<h4 class="blog-article-title"><b><%= m.title %></b></h4>
+									<div class="blog-article-footer">
+										<span class="blog-article-author">
+											<a href=""><%= m.artist.user.nickname%></a>
+										</span>
+										<span class="blog-article-author right">
+											<%= "#{m.genre}, #{m.size} #{m.year}" %>
+										</span>
+									</div>
+								</div>
+						</article>
+					<% end %><!-- 작품들 -->
+				</div>
+
+				<!--Pagination -->
+				<!--<ul class="pagination">-->
+				<!--	<li class="prev"><a href=""><i class="icon-arrow-left5"></i></a></li>-->
+					<!--<li class="active"><a href="">1</a></li>-->
+					<!--<li><a href="">2</a></li>-->
+					<!--<li><a href="">3</a></li>-->
+					<!--<li><a href="">...</a></li>-->
+					<!--<li><a href="">9</a></li>-->
+				<!--	<li class="next"><a href=""><i class="icon-arrow-right5"></i></a></li>-->
+				<!--</ul>-->
+				<div class="digg_pagination">
+				    <%= will_paginate @markets, :container => false %>
+				</div>
+			</div><!-- PRODUCT CONTAINER -->
+			<!-- SHOP SIDEBAR -->
+			<aside class="shop-sidebar col-md-3">
+				<ul class="sidebar-widgets">
+					<!-- sidebar widget -->
+					<li class="search-bar sidebar-widget">
+						<input type="search" placeholder="검색하기">
+					</li>
+					<!-- sidebar widget -->
+					<li class="categories-widget sidebar-widget">
+						<h3 class="sidebar-widget-title">테마</h3>
+						<ul>
+							<li><a href="">전체</a></li>
+							<li><a href="">풍경</a></li>
+							<li><a href="">인물</a></li>
+							<li><a href="">정물</a></li>
+							<li><a href="">동물</a></li>
+							<li><a href="">추상</a></li>
+							<li><a href="">공간</a></li>
+							<li><a href="">팝아트</a></li>
+							<li><a href="">기타</a></li>
+						</ul>
+					</li>
+					<!-- sidebar widget -->
+					<li class="shop-recent-products sidebar-widget">
+						<h3 class="sidebar-widget-title">최근 작품</h3>
+						<ul>
+							<% @recents.each do |r|%>
+							<li class="media">
+								<div class="cl">
+									<a href=""><%= image_tag(r.image, size: "80") %></a>
+								</div>
+								<div class="bd">
+									<h4 class="recent-product-title"><a href=""><%= r.title%></a></h4>
+									<span class="recent-product-price"><%= r.artist.user.nickname %></span>
+								</div>
+							</li>
+							<% end %>
+						</ul>
+					</li>
+
+					<!-- sidebar widget -->
+					<li class="shop-last-products sidebar-widget">
+						<h3 class="sidebar-widget-title">추천 작품</h3>
+						<ul>
+							<% @recommends.each do |r|%>
+							<li class="media">
+								<div class="cl">
+									<a href=""><%= image_tag(r.image, size: "80") %></a>
+								</div>
+								<div class="bd">
+									<h4 class="recent-product-title"><a href=""><%= r.title%></a></h4>
+									<span class="recent-product-price"><%= r.artist.user.nickname %></span>
+								</div>
+							</li>
+							<% end %>
+						</ul>
+					</li>
+					<li class="sidebar-widget">
+						<a href="">
+							<img class="scale" src="/images/event.jpg" alt="">
+						</a>
+					</li>
+				</ul>
+			</aside>
+		</div><!-- BOX CONTAINER -->
+	</section><!-- End Content -->

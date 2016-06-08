@@ -1,0 +1,31 @@
+	<!-- *********************
+		INTRO PAGE TITLE
+	********************** -->
+	<section class="heading-page-section">
+		<div class="container">
+			<div class="col-md-12">
+				<h1 class="heading-page-title">로그인</h1>
+			</div>
+		</div>
+	</section>
+	<section class="grey-bg">
+		<div class="container">
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        <br/>
+        <div class="field">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+        <br/>
+        <div class="actions">
+          <%= f.submit "로그인", class:"m-btn m-btn-medium m-btn-default m-btn-radius" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+  </div>
+</section>

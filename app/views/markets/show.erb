@@ -1,0 +1,169 @@
+	<!-- *********************
+		INTRO PAGE TITLE
+	********************** -->
+	<section class="heading-page-section">
+		<div class="container">
+			<div class="col-md-12">
+				<h1 class="heading-page-title"><%=@market.title%></h1>
+			</div>
+		</div>
+	</section>
+	<!-- *********************
+		CONTENT
+	********************** -->
+	<section id="shop" class="content shop">
+		<div class="container">
+			<div class="single-product">
+				<div class="col-md-6">
+					<div class="single-product-gallrey flexslider">
+						<ul class="slides">
+							<!--<li data-thumb="http://placehold.it/80x100">-->
+							<!--	<img src="http://placehold.it/300x380" class="scale" alt="">-->
+							<!--</li>-->
+							<li><%= image_tag(@market.image) %></li>
+						</ul>
+						<div class="zoom">
+							<button class="m-btn m-btn-radius m-btn-border m-btn-small">+ Zoom</button>
+							<button class="m-btn m-btn-radius m-btn-border m-btn-small">View in the room</button>
+						</div>
+					</div>
+				</div><!-- PRODUCT SLIDER -->
+				<div class="col-md-6 single-product-info">
+					<div class="single-product-header">
+						<span class="product-price left">
+							<!--<del>30$</del>-->
+							<ins>￦ <%=@market.price%></ins>
+						</span>
+						<div class="single-product-rate right">
+							<i class="icon-star"></i>
+							<i class="icon-star"></i>
+							<i class="icon-star"></i>
+							<i class="icon-star"></i>
+							<i class="icon-star"></i>
+						</div>
+					</div>
+					<div class="separator"></div>
+					<div class="single-product-desc">
+						<p>
+							<%=@market.content%>
+						</p>
+						<!--<ul class="m-standard-list">-->
+						<!--	<li>White shirt</li>-->
+						<!--	<li>Black glossy pant</li>-->
+						<!--	<li>Red cap</li>-->
+						<!--</ul>-->
+						<ul class="product-meta clearfix">
+							<li>Material : <%=@market.material%></li>
+							<li>Size : <%=@market.size%></li>
+							<li>Year : <%=@market.year%></li>
+							<li>Frame : non framed</li>
+						</ul>
+					</div>
+					<div class="separator"></div>
+					<form action="">
+						<div class="spacer"></div>
+						<input type="number" class="product-quantity" value="1">
+						<a href="" class="m-btn m-btn-large m-btn-default">장바구니</a>
+					</form>
+				</div><!-- PRODUCT DESC -->
+			
+				
+				<div class="separator"></div>
+				<!-- TABS -->
+				<div class="col-md-12">
+					<ul class="m-nav-tabs">
+					    <li class="active"><a class="active" data-tab="#tab1" href="#">Description</a></li>
+					    <li><a data-tab="#tab2" href="#">Comments</a></li>
+					</ul>
+
+					<div class="m-content-tabs">
+					    <div class="tabs-pane active" id="tab1">
+					    	<p>
+							 작가는 사람-사람과 같은 관계에 집중하여, 팝아트적 이미지 형상에 '일상'과 '관계'에서 비롯되는 우화를 녹여내는 작업을 진행한다.
+							 화려한 색감으로 매끈하게 마감된 작업 이면에는 냉혹한 현실에 대한 은유적 발언이 숨겨져 있으며, 작가는 자신의 이야기를 작업에 반영하여
+							 스스로 내적 트라우마를 치유하고 대중들 역시 치유받기를 바란다. 
+							</p>
+							
+					    	<table class="table table-striped table-bordered">
+					    		<tr>
+					    			<td>작품명</td>
+					    			<td><%= @market.title %></td>
+					    		</tr>
+					    		<tr>
+					    			<td>사이즈</td>
+					    			<td><%= @market.size %></td>
+					    		</tr>
+					    		<tr>
+					    			<td>장르</td>
+					    			<td><%= @market.genre %></td>
+					    		</tr>
+					    		<tr>
+					    			<td>제작년도</td>
+					    			<td><%= @market.year %></td>
+					    		</tr>
+					    		<tr>
+					    			<td>프레임 여부</td>
+					    			<td>무</td>
+					    		</tr>
+					    		<tr>
+					    			<td>재료</td>
+					    			<td><%= @market.material %></td>
+					    		</tr>
+					    	</table>							
+					    </div>
+					    <div class="tabs-pane" id="tab2">
+					    	<ul>
+					    		<li class="comment">
+									<div class="comment-author">
+										<img src="/images/user.png" alt="">
+									</div>
+									<div class="comment-content">
+										<h4 class="author-name">안우리</h4>
+										<div class="review-product-rate">
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+											<i class="icon-star"></i>
+										</div>
+										<span class="comment-time">2016.06.07</span>
+
+										<p>
+											참신함이 돋보이는 작품입니다!
+										</p>
+									</div>
+								</li>
+					    	</ul>
+					    	<div class="spacer"></div>
+					    	<!--  -->
+					    	<div class="comment-form">
+								<h3 class="comment-form-title">댓글 달기</h3>
+								<div class="triple-input">
+									<div class="input-col col-1">
+										<% if user_signed_in? %>
+										<input type="text" id="name" name="name" vlaue="<%= current_user.nickname %>">
+										<% else %>
+										<input type="text" id="name" name="name" placehold="로그인 후 이용가능합니다">
+										<% end %>
+									</div>
+									<div class="input-col col-1">
+										<select name="" id="">
+											<option value="">별한개</option>
+											<option value="">별두개</option>
+											<option value="">별세개</option>
+											<option value="">별네개</option>
+											<option value="">별다섯개</option>
+										</select>
+									</div>
+								</div>
+								<textarea name="comment" id="comment" placeholder="댓글을 작성해주세요..."></textarea>
+								<p>
+									<button class="m-btn m-btn-medium m-button-default">댓글달기</button>
+								</p>
+							</div><!-- FORM -->
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div><!-- BOX CONTAINER -->
+	</section><!-- End Content -->

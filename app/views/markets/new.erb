@@ -1,0 +1,103 @@
+<!-- 새로운 작품을 업로드 -->
+<!-- *********************
+	CONTACT
+********************** -->
+<section class="contact grey-bg section-area" id="contact">
+	<div class="container">
+		<div class="heading-wrap col-md-12">
+			<h3 class="section-title">작품업로드</h3>
+			<!--<span class="section-subtitle-m">Drop us some lines.</span>-->
+	        <span class="section-subtitle-info-title">도움말 및 제안사항</span>
+            <p class="section-subtitle-info"> 
+                업로드전에 다른 사람의 저작권을 침해하지 않도록 반드시 이용약관을 확인하여 주시길 바랍니다.
+                업로드하면 페인팅팜의 서비스 약관 및 커뮤니티 가이드를 준수해야 함을 인정하는 것입니다. 저작권 침해가 의심되어진다면  한국미술저작권관리협회에서 저작권법 확인 후 업로드하여 주시길 바랍니다.
+                저작권에 위법되는 작품들은 경고없이 자동 삭제 될 수 있습니다.
+			</p>
+		</div>
+		<form role="form" action="/markets/create" method="POST" enctype="multipart/form-data">
+			<div class="col-md-4 wow fadeInUp" data-wow-delay=".5s">
+				
+			    <div id="image_preview">
+			        <img src="/images/no-pic.png"/>
+			    </div>			
+				<div class="form-group">
+					<div class="custom-file-upload">
+					    <label for="image">이미지파일을 선택하여 주세요</label>
+					    <input type="file" id="image" name="image"/>
+					</div>
+				</div>			    
+			</div><!--// fadeInUp -->
+			<!--  상세정보 FORM  -->
+			<div class="col-md-7 col-md-offset-1 wow flipInY" data-wow-delay="1.2s">
+				<div class="contact-form-wrap">
+						<input type="hidden" name="artist" value="<%= current_user.id %>">
+					
+						<div class="form-group">
+							<input type="text" id="title" name="title" placeholder="*제목" required data-error="필수정보입니다">
+							<div class="help-block with-errors"></div>
+						</div>
+	
+						<div class="form-group">
+							<input type="text" id="price" name="price" placeholder="가격">
+						</div>
+						
+						<div class="form-group">
+							<input type="text" id="size" name="size" placeholder="*크기 (ex)140x50cm)" required data-error="필수정보입니다">
+							<div class="help-block with-errors"></div>
+						</div>
+						
+						<div class="form-group">
+							<input type="text" id="year" name="year" placeholder="*제작년도" required data-error="필수정보입니다">
+							<div class="help-block with-errors"></div>
+						</div>
+						
+						<div class="form-group">
+							<input type="text" id="genre" name="genre" placeholder="*장르" required data-error="필수정보입니다">
+							<div class="help-block with-errors"></div>
+						</div>
+						
+						<div class="form-group">
+							<input type="text" id="material" name="material" placeholder="*재료" required data-error="필수정보입니다">
+							<div class="help-block with-errors"></div>
+						</div>						
+						
+						<div class="form-group">
+							<textarea id="content" name="content" placeholder="설명"></textarea>
+						</div>
+	
+						<button type="submit" id="form-submit" class="m-btn m-btn-radius m-btn-full m-btn-large">등록</button>
+						<div id="msgSubmit" class="submit-msg align-center hidden"></div>
+			
+				</div>
+			</div><!--// CONTACT FORM  -->
+	    </form>
+	    
+	</div><!--//container -->
+</section>
+
+<script type="text/javascript">
+    /** 
+    onchange event handler for the file input field.
+    It emplements very basic validation using the file extension.
+    If the filename passes validation it will show the image using it's blob URL  
+    and will hide the input field and show a delete button to allow the user to remove the image
+    */
+
+	$('#image').on('change', function() {
+	        
+	    ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	        
+	    //배열에 추출한 확장자가 존재하는지 체크
+	    if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'avi']) == -1) {
+	        resetFormElement($(this)); //폼 초기화
+	        window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+	    } else {
+	        file = $('#image').prop("files")[0];
+	        blobURL = window.URL.createObjectURL(file);
+	        $('#image_preview img').attr('src', blobURL);
+	        $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+	        $(this).slideUp(); //파일 양식 감춤
+	    } 
+	});
+
+</script>
