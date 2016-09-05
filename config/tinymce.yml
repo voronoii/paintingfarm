@@ -1,0 +1,18 @@
+# selector: 
+#   - textarea
+toolbar:
+  - styleselect | bold italic | undo redo | image | link | uploadimage
+plugins:
+  - image
+  - link
+  - uploadimage
+# language:
+#   - ko
+# relative_urls: 
+#   - false
+# remove_script_host:
+#   - true
+# document_base_url: 
+#   - /
+# convert_urls: 
+#   - true  

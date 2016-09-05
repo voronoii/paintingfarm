@@ -56,4 +56,5 @@ before_action :configure_account_update_params, only: [:update]
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  
 end

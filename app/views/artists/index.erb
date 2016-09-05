@@ -1,154 +1,51 @@
 	<!-- *********************
 		INTRO PAGE TITLE
 	********************** -->
-	<section class="heading-page-section">
+	<section class="heading-page-section2">
 		<div class="container">
 			<div class="col-md-12">
-				<h1 class="heading-page-title">Portfolio</h1>
+				<h1 class="heading-page-title">아티스트</h1>
+				<span class="heading-page-subtitle">당신의 아티스트를 찾아보세요!</span>
 			</div>
 		</div>
 	</section>
 	<!-- *********************
-		PORTFOLIO
+		작가목록
 	********************** -->
 	<section class="portfolio section-area no-pd-b" id="portfolio">
 		<div class="container">
-			<!-- PORTFOLIO CATEGORIES FILTERS -->
+			<!-- 작가목록 카테고리 필터 -->
 			<nav class="portfolio-navigation">
 				<ul class="portfolio-filter clearfix" data-option-key="filter">
-					<li><a href="" data-filter="*" class="current-filter">All</a></li>
-					<li><a href="" data-filter=".web-design">Web Design</a></li>
-					<li><a href="" data-filter=".branding">Branding</a></li>
-					<li><a href="" data-filter=".graphic-design">Graphic Design</a></li>
-					<li><a href="" data-filter=".print">Print</a></li>
+					<li><a href="" data-filter="*" class="current-filter">모든 아티스트</a></li>
+					<!--<li><a href="" data-filter=".ga">ㄱ</a></li>-->
 				</ul>
 			</nav>
-		</div>
-		<!-- PORTFOLIO FILTERS -->
-		<div class="portfolio-container portfolio-no-gutters-5">
+		<!-- 작가 항목-->
+		<div class="portfolio-container portfolio-gutters-3">
+			<!-- 이부분이 반복-->
 			<!-- portfolio item -->
-			<div class="portfolio-item graphic-design">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
+			<% @artists.each do |artist| %>
+			<!--여기 하단 클래스 옆에다가 data filter 설정해줘야함 8월 24일 우리추가-->
+			<div class="portfolio-item">
+				<a href="/artists/show/<%= artist.id %>">
+					<img src="<%= artist.markets.first.image%>" alt="">
 					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">A night to remember</h2>
-						<div class="portfolio-item-cats">
-							<span>graphic design</span>
-							<span>branding</span>
-						</div>
-					</div>
+						<h2 class="portfolio-item-title">
+								<%= artist.user.nickname %>							
+						</h2>
+						<!--<div class="portfolio-item-cats">-->
+						<!--	<span>여기다가 무엇을</span>-->
+						<!--	<span>넣어야할까</span>-->
+						<!--</div>-->
+					</div><!--// portfolio-item-caption -->
 				</a>
 			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item web-design">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Fedelio</h2>
-						<div class="portfolio-item-cats">
-							<span>web design</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item print">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Urban Face</h2>
-						<div class="portfolio-item-cats">
-							<span>print</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item branding">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Codecanyon</h2>
-						<div class="portfolio-item-cats">
-							<span>branding</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item graphic-design">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Ella</h2>
-						<div class="portfolio-item-cats">
-							<span>graphic design</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item web-design">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Trello</h2>
-						<div class="portfolio-item-cats">
-							<span>web design</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item print">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Elite men</h2>
-						<div class="portfolio-item-cats">
-							<span>print</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item branding">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Porshe</h2>
-						<div class="portfolio-item-cats">
-							<span>branding</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item branding">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Codecanyon</h2>
-						<div class="portfolio-item-cats">
-							<span>branding</span>
-						</div>
-					</div>
-				</a>
-			</div>
-			<!-- portfolio item -->
-			<div class="portfolio-item graphic-design">
-				<a href="">
-					<img src="http://placehold.it/300x300" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">Ella</h2>
-						<div class="portfolio-item-cats">
-							<span>graphic design</span>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div><!-- END PORTFOLIO CONTAINER -->
-		<div class="load-more">
-			<a href="" class="m-btn m-btn-large m-btn-default m-btn-radius m-btn-border">Show More</a>
-		</div>	
+			<% end %>
+			<!--// 여기까지 반복 -->	
+			</div><!-- END PORTFOLIO CONTAINER -->
+			<!--<div class="load-more">-->
+			<!--	<a href="" class="m-btn m-btn-large m-btn-default m-btn-radius m-btn-border">더보기</a>-->
+			<!--</div>-->
+		</div><!--// container -->
 	</section>

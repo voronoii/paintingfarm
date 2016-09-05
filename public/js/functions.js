@@ -124,18 +124,18 @@ $(document).ready(function() {
     var progressPercent = $(this).data('percent');
 
     $(this).animate({width: progressPercent+'%'});
-    $(this).prev().append(' '+progressPercent+'%');
+    $(this).prev().append(' '+progressPercent+'개');
   });
    $('.m-pgs-bar-thin-percent').each(function(){
     var progressPercent = $(this).data('percent');
 
     $(this).animate({width: progressPercent+'%'});
-    $(this).next().append(' '+progressPercent+'%');
+    $(this).next().append(' '+progressPercent+'개');
   });
   /* ---------------------------------------------
    Height 100%
    --------------------------------------------- */
-  $(".full-height").height($(window).height());
+   $(".full-height").height($(window).height());
 
   // HOVER EFFECTS -----------------------
 
@@ -166,6 +166,28 @@ $(document).ready(function() {
     $('.cart-modal').fadeOut();
     $('.cart-modal-wrap').css('margin-top','50px');
   });
+  
+  // 우리추가 LOGIN MODAL -------------- 여기버그를 수정해야함(8월2일)
+  // $('.login-button').click(function(){
+  //   $('.login-modal').fadeIn();
+  //   $('.login-modal-wrap').css('margin-top','110px');
+  // });
+  
+    $('#loginClose').click(function(){
+    $('.login-modal').fadeOut();
+    $('.login-modal-wrap').css('margin-top','50px');
+    setTimeout(history.go(-1),1000);
+  }); //여기까지
+  
+    
+  // 우리추가 SIGNUP MODAL --------------
+    $('#signupClose').click(function(){
+    $('.signup-modal').fadeOut();
+    $('.signup-modal-wrap').css('margin-top','50px');
+    setTimeout(history.go(-1),1000);
+  }); //여기까지
+  
+  
   // RESPONSIVE NAVIGATION  --------------------
   $('.responsive-trigger').toggle(function(){
     $(this).children('i').removeClass('icon-list2').addClass('icon-cross');
@@ -259,7 +281,7 @@ $(document).ready(function() {
   jQuery('.banner').show().revolution(
     {
       dottedOverlay:"none",
-      delay:8000,
+      delay:5000,
       startwidth:1170,
       startheight:700,
       hideThumbs:200,
@@ -304,7 +326,7 @@ $(document).ready(function() {
           
       shadow:0,
       fullWidth:"off",
-      fullScreen:"on",
+      fullScreen:"off",
 
       spinner:"spinner4",
       

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>View in a room</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <style>
+    html { 
+      background: url(<%=@img_url%>) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    #draggable{ 
+      height: <%=@view_img_height%>px;
+      width: <%=@view_img_width%>px;
+      border: transparent;
+    }
+    #clickme{
+      color: #ffffff;
+      display: block;
+      font-size: 2em;
+      font-weight: 400;
+      margin-bottom: 40px;
+      line-height: 140%;
+      text-align: center;
+    }
+    #img_wrapper{
+      position: fixed;
+      right: 0px;
+      bottom: 0px;
+      margin: 0px;
+      padding: 0px;
+      max-height: 100%;
+    }
+    #person_img{
+      height: <%=@person_height%>px;
+      max-height: 100%;
+    }
+    h2{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      margin: 0;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+    <img id="draggable" class="ui-widget-content" src="<%=@market_img_url%>">
+    <p id="clickme">"마우스 드래그로 원하는 위치로 이동시켜보세요!"</p>
+    <div id="img_wrapper">
+      <img id="person_img" src="/icon_img/standing-person.png">
+      <h2>170cm</h2>
+    </div>
+<script>
+    /*작품 드래그*/
+    $(function() {
+        $( "#draggable" ).draggable();
+    });
+    /*안내문구 삭제*/
+    $( "#draggable" ).click(function() {
+      $( "#clickme" ).fadeOut( "slow" );
+    });
+
+</script>
+</body>
+</html>

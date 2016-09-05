@@ -1,0 +1,44 @@
+        <style>
+            #writer { width: 200px;}
+            #title { width: 500px; }
+            #div1 { width: 85%; height: 80%; margin: 10px 100px; padding: 30px;}
+        </style>
+
+        <div class='container'>
+            <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+                <h1>글 작성하기</h1>
+            </div>
+        </div>
+        
+        <div class='container' id='div1'>
+            <form action='/boards/create' method='POST'>
+                <div>
+                    <label for='writer'>작성자</label><br>
+                    <% if user_session != nil %>
+                        <%= current_user.nickname %>
+                        <input type='hidden' name='writer' value= <%= current_user.nickname %>>
+                        <input type='hidden' name='writer_id' value= <%= current_user.id %>>
+                    <% else %>
+                        <input class='form-control' type="text" name='writer' id='writer'>
+                        <input type='hidden' name='writer_id' value='작성자 아이디'>
+                    <% end %>
+                </div><br>
+                
+                <div>
+                    <label for='title'>글 제목</label>
+                    <input class='form-control' type='text' name='title' id='title'>
+                </div><br>
+                
+                <div>
+                    <label for='content'>글 내용</label>
+                    <textarea class="tinymce" name='content' rows='15' cols='30'></textarea>
+                    <%= tinymce %>
+                </div><br>
+                
+                <div>
+                    <%= button_tag "취소", :type => 'button', :class => "btn btn-danger", :onclick => "location.href = '/boards'" %>
+                    <button class='btn btn-info' type='submit'>글 등록하기</button>
+                </div>
+            </form>
+    
+        </div>

@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
-
+gem 'mailgun_rails' #메일보내기
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3' , group: :development #c9용
+gem 'pg', group: :production #heroku용
+gem 'rails_12factor', group: :production
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,6 +49,13 @@ group :development do
 end
 
 gem 'devise'
-gem 'hirb'
+gem 'hirb-unicode'
 gem 'carrierwave'
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
+
+gem 'omniauth-facebook'
+
+gem 'tinymce-rails'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'tinymce-rails-langs'

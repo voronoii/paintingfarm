@@ -1,11 +1,42 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-        registrations: 'users/registrations'
+        registrations: 'users/registrations',
+        omniauth_callbacks: "users/omniauth_callbacks" 
       }
+  # resources :events
   root 'home#index'
-  get ':controller(/:action(/:id))'
-  post ':controller(/:action(/:id))'
+  
+  #이벤트
+  get 'boards' => 'boards#index'
+  # post '/tinymce_assets' => 'tinymce_assets#create'
+  # get 'boards/show/:id' => 'boards#show'
+  # get 'boards/edit/:id' => 'boards#edit'
+  # post 'boards/update/:id' => 'boards#update'
+  # get 'boards/delete/:id' => 'boards#delete'
+  # post 'boards/comment/:id' => 'boards#comment'
+  # post 'boards/create_notice' => 'boards#create_notice'
+  # get 'boards/notice' => 'boards#notice'
 
+  #마켓
+  get 'markets' => 'markets#index'
+  get 'markets/show/:id' => 'markets#show'
+  post 'markets/email_send' => 'markets#email_send'
+  get 'markets/new'
+  post 'markets/create'
+  # get 'markets/edit/:id' => 'markets#edit'
+  # get 'markets/delete/:id' => 'markets#delete'
+  # post 'markets/update/:id' => 'markets#update'
+  get 'markets/view_in_a_room/:id' => 'markets#view_in_a_room'
+  
+  
+  #아티스트
+  get 'artists' => 'artists#index'
+  get 'artists/show/:id' => 'artists#show'
+
+  
+  # get ':controller(/:action(/:id))'
+  # post ':controller(/:action(/:id))'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

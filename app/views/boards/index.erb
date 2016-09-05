@@ -1,0 +1,28 @@
+		<!-- *********************
+			INTRO PAGE TITLE
+		********************** -->
+		<section class="heading-page-section">
+			<div class="container">
+				<div class="col-md-12">
+					<h1 class="heading-page-title">이벤트</h1>
+					<span class="heading-page-subtitle">다양한 행사와 이벤트를 만나보세요!</span>
+				</div>
+			</div>
+		</section>  
+	<!-- *********************
+		ACCORDION
+	********************** -->
+	<section>
+		<div class="container">
+			<dl class="m-accordion col-md-12">
+			<% @notices.each do |n| %>
+				<dt>
+				    <%= n.title %>
+				</dt>
+				<dd>
+					 <%= n.content.html_safe %>			 
+				</dd>
+			<% end %>
+			</dl>
+		</div>
+	</section>

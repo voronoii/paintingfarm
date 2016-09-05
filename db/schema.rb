@@ -11,11 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603130800) do
+ActiveRecord::Schema.define(version: 20160825110434) do
 
   create_table "artists", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "market_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.string   "writer"
+    t.integer  "writer_id"
+    t.string   "pwd"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "views",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "p_id"
+    t.integer  "user_id"
+    t.string   "user_name"
+    t.string   "pwd"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +54,23 @@ ActiveRecord::Schema.define(version: 20160603130800) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "image"
+    t.integer  "width"
+    t.integer  "height"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.integer  "writer"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "views",      default: 0
+  end
+
+  create_table "post_images", force: :cascade do |t|
+    t.text     "image_url",  limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +88,10 @@ ActiveRecord::Schema.define(version: 20160603130800) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

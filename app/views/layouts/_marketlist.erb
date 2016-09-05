@@ -1,0 +1,34 @@
+<!-- *********************
+		CONTENT
+********************** -->
+<div class="blog-articles-masonry-container clearfix ">
+	<!-- 작품들-->
+	<% @markets.each do |m|%>
+		<article class="blog-article-masonry">	
+				<div class="blog-article-img">
+					<%= image_tag(m.image) %>
+				</div>
+				
+				<a href="/markets/show/<%=m.id%>"><div class="product-cap"></div></a>
+
+				<div class="blog-article-content">
+					<h4 class="blog-article-title"><b><%= m.title %></b></h4>
+					<div class="blog-article-footer">
+						<span class="blog-article-author">
+							<a href="">
+								<% if m.artist.user.nickname.empty? %>
+									<%= m.artist.user.name %>
+								<% else %>
+									<%= m.artist.user.nickname %>
+								<% end %>	
+							</a>
+						</span>
+						<span class="blog-article-author right">
+							<%= "#{m.genre}, #{m.width}x#{m.height}cm #{m.year}" %>
+						</span>
+					</div>
+				</div>
+		</article>	
+	<% end %><!-- 작품들 -->
+	
+</div>
