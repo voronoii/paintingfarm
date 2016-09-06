@@ -110,8 +110,8 @@
 					<% if current_user == @market.artist.user %>
 					<!--작품 수정 및 삭제 버튼-->
 					<div class="separator"></div>
-					<a href="" class="m-btn m-btn-medium">수정하기</a>
-					<a href="" class="m-btn m-btn-medium">삭제하기</a>
+					<a href="/market/edit/<%= @market.id %>" class="m-btn m-btn-medium">수정하기</a>
+					<a href="/market/delete/<%= @market.id %>" class="m-btn m-btn-medium">삭제하기</a>
 					<% end %>
 				</div><!-- PROJECT DETAILS -->
 			

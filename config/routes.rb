@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   post 'markets/email_send' => 'markets#email_send'
   get 'markets/new'
   post 'markets/create'
-  # get 'markets/edit/:id' => 'markets#edit'
-  # get 'markets/delete/:id' => 'markets#delete'
-  # post 'markets/update/:id' => 'markets#update'
+  get 'markets/edit/:id' => 'markets#edit'
+  get 'markets/delete/:id' => 'markets#delete'
+  post 'markets/update/:id' => 'markets#update'
   get 'markets/view_in_a_room/:id' => 'markets#view_in_a_room'
   
   
