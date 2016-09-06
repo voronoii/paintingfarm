@@ -111,12 +111,14 @@
 							<input type="hidden" name="market_artist" value="<%= @market.artist.user.nickname %>">
 						<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">Contact Gallery</button>
 					</form>
-					<% if current_user.email == "paintingfarm@gmail.com" %>
-					<%#= if current_user.id == 19  %>
-					<!--작품 수정 및 삭제 버튼-->
-					<div class="separator"></div>
-					<a href="/markets/edit/<%= @market.id %>" class="m-btn m-btn-medium">수정하기</a>
-					<a href="/markets/delete/<%= @market.id %>" class="m-btn m-btn-medium">삭제하기</a>
+					<% if user_signed_in? %>
+						<% if current_user.email == "paintingfarm@gmail.com" %>
+						<%#= if current_user.id == 19  %>
+						<!--작품 수정 및 삭제 버튼-->
+						<div class="separator"></div>
+						<a href="/markets/edit/<%= @market.id %>" class="m-btn m-btn-medium">수정하기</a>
+						<a href="/markets/delete/<%= @market.id %>" class="m-btn m-btn-medium">삭제하기</a>
+						<% end %>
 					<% end %>
 				</div><!-- PROJECT DETAILS -->
 			
