@@ -30,7 +30,7 @@
 			<!--  상세정보 FORM  -->
 			<div class="col-md-7 col-md-offset-1 wow flipInY" data-wow-delay="1.2s">
 				<div class="contact-form-wrap">
-						<input type="hidden" name="artist" value="<%= current_user.id %>">
+						<input type="hidden" name="artist" value="<%= @market.artist.user.id %>">
 					
 						<div class="form-group">
 							<input type="text" id="title" name="title" placeholder="*제목" value="<%=@market.title%>" required data-error="필수정보입니다">
