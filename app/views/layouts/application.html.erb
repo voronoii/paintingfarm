@@ -87,7 +87,7 @@
 					     <a href="/users/sign_in"><button class="m-btn m-btn-white login-button">로그인</button></a>
 						<% end %>
 						
-						<% current_user.email == "paintingfarm@gmail.com"%>
+						<% user_signed_in? %>
 						<a href="/markets/new"><button class="m-btn new-button">작품등록</button></a>
 						<% end %>
 					</nav>
