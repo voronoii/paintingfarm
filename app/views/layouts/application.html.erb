@@ -87,7 +87,7 @@
 					     <a href="/users/sign_in"><button class="m-btn m-btn-white login-button">로그인</button></a>
 						<% end %>
 						
-						<% user_signed_in? %>
+						<% if user_signed_in? %>
 						<a href="/markets/new"><button class="m-btn new-button">작품등록</button></a>
 						<% end %>
 					</nav>
