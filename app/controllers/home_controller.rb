@@ -7,4 +7,14 @@ class HomeController < ApplicationController
     @artist_count = Artist.all.count
     
   end
+  
+  def email_send #문의 이메일 보내기
+    sender = params[:sender]
+    email = params[:email]
+    message = params[:message]
+    
+    
+    ContactGallery.send_email2(sender, email, message).deliver_now
+    redirect_to :back
+  end
 end

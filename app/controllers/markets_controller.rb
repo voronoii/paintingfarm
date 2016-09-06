@@ -135,7 +135,12 @@ class MarketsController < ApplicationController
     sender = params[:sender]
     email = params[:email]
     message = params[:message]
-    ContactGallery.send_email(sender, email, message).deliver_now
+    
+    m_id = params[:market_id]
+    m_title = params[:market_title]
+    m_artist = params[:market_artist]
+    
+    ContactGallery.send_email(sender, email, message, m_id, m_title, m_artist).deliver_now
     redirect_to :back
   end
 

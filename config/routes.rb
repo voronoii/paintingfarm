@@ -5,6 +5,9 @@ Rails.application.routes.draw do
       }
   # resources :events
   root 'home#index'
+  #문의메일
+  
+  post 'home/email_send'
   
   #이벤트
   get 'boards' => 'boards#index'

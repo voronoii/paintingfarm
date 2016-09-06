@@ -26,7 +26,10 @@
 				<div class="col-md-7">
 					<div class="single-product-gallrey flexslider">
 						<ul class="slides">
-							<li><%= image_tag(@market.image) %></li>
+							<!--<li>-->
+								<%#= image_tag(@market.image) %>
+							<!--</li>-->
+							<li><img src="public<%=@market.image%>" alt="<%= @market.title %>"></li>
 						</ul>	
 						<div class="zoom">	
                             <!-- zoom -->
@@ -104,7 +107,9 @@
 							<textarea name="message" required>Hi, I’m interested in purchasing this work. Could you please provide more information about the piece?</textarea>
 							<div class="help-block with-errors"></div>
 						</div>
-
+							<input type="hidden" name="market_id" value="<%= @market.id %>">
+							<input type="hidden" name="market_title" value="<%= @market.title %>">
+							<input type="hidden" name="market_artist" value="<%= @market.artist.user.nickname %>">
 						<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">Contact Gallery</button>
 					</form>
 					<% if current_user == @market.artist.user %>
