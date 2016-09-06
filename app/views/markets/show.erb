@@ -107,7 +107,7 @@
 
 						<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">Contact Gallery</button>
 					</form>
-					<% if current_user.email == "paintingfarm@gmail.com"%>
+					<% if current_user == @market.artist.user %>
 					<!--작품 수정 및 삭제 버튼-->
 					<div class="separator"></div>
 					<a href="" class="m-btn m-btn-medium">수정하기</a>
