@@ -26,10 +26,9 @@
 				<div class="col-md-7">
 					<div class="single-product-gallrey flexslider">
 						<ul class="slides">
-							<!--<li>-->
-								<%#= image_tag(@market.image) %>
-							<!--</li>-->
-							<li><img src="public<%=@market.image%>" alt="<%= @market.title %>"></li>
+							<li>
+								<%= image_tag(@market.image) %>
+							</li>
 						</ul>	
 						<div class="zoom">	
                             <!-- zoom -->
@@ -115,8 +114,8 @@
 					<% if current_user == @market.artist.user %>
 					<!--작품 수정 및 삭제 버튼-->
 					<div class="separator"></div>
-					<a href="/market/edit/<%= @market.id %>" class="m-btn m-btn-medium">수정하기</a>
-					<a href="/market/delete/<%= @market.id %>" class="m-btn m-btn-medium">삭제하기</a>
+					<a href="/markets/edit/<%= @market.id %>" class="m-btn m-btn-medium">수정하기</a>
+					<a href="/markets/delete/<%= @market.id %>" class="m-btn m-btn-medium">삭제하기</a>
 					<% end %>
 				</div><!-- PROJECT DETAILS -->
 			
