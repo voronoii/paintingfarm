@@ -74,10 +74,10 @@
 					    <% if user_signed_in? %>
 						  <!--<div class="dropdown">-->
 						    <button class="m-btn m-btn-white profile-button dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						     	<%= current_user.nickname if current_user.nickname %>
+						     	<%= current_user.nickname %>
 						    <span class="caret"></span></button>
 						    
-						    <ul class="dropdown-menu" style="righ=0;">
+						    <ul class="dropdown-menu" style="righ: 0;">
 						      <!--<li><a class="dropdown-item" href="/mypage/index">마이페이지</a></li>-->
 						      <!--<li><a class="dropdown-item" href="/mypage/myartwork">내 작품</a></li>-->
 						      <li><a class="dropdown-item" href="/users/sign_out" data-method="delete">로그아웃</a></li>
@@ -95,6 +95,7 @@
 				<span class="responsive-trigger"><i class="icon-list2"></i></span>
 			</div>
 		</div>
+		<!-- 반응형 웹 부분-->
 		<!-- RESPONSIVE NAVIGATION -->
 		<nav class="responsive-navigation">
 			<ul>
@@ -111,7 +112,11 @@
 					<!--<span class="submenu-trigger"><i class="icon-arrow-down5"></i></span>-->
 				</li>
 				<!--<li><a href="/boards">자유게시판</a></li>-->
-				<li><a href="/users/sign_in">로그인</a></li>
+				<%# unless user_signed_in? %>
+					<!--<li><a href="/users/sign_in">로그인</a></li>-->
+				<%# else %>
+					<!--<li><a href="/users/sign_out" data-method="delete">로그아웃</li>-->
+				<%# end %>
 			</ul>
 		</nav>
 	</header>

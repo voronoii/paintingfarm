@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   get 'artists' => 'artists#index'
   get 'artists/show/:id' => 'artists#show'
 
-  
   # get ':controller(/:action(/:id))'
   # post ':controller(/:action(/:id))'
   

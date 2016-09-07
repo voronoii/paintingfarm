@@ -74,6 +74,7 @@ class MarketsController < ApplicationController
   
   def update #수정하기
     m = Market.find(params[:id])
+    m.remove_image! #수정시에도 기존에 있던 이미지파일은 삭제
     
     m.update(title: params[:title], price: params[:price], width: params[:width], height: params[:height],
             genre: params[:genre], year: params[:year], material: params[:material], 
