@@ -69,11 +69,11 @@
 						</span>
 					</div>
 					<div class="separator"></div>					
-					<!--<p>-->
-					<!-- 작가는 사람-사람과 같은 관계에 집중하여, 팝아트적 이미지 형상에 '일상'과 '관계'에서 비롯되는 우화를 녹여내는 작업을 진행한다.-->
-					<!-- 화려한 색감으로 매끈하게 마감된 작업 이면에는 냉혹한 현실에 대한 은유적 발언이 숨겨져 있으며, 작가는 자신의 이야기를 작업에 반영하여-->
-					<!-- 스스로 내적 트라우마를 치유하고 대중들 역시 치유받기를 바란다. -->
-					<!--</p>-->
+					<% unless @market.content.empty? %>
+					<p>
+						<%= @market.content %>
+					</p>
+					<% end %>
 					<!-- Project info details -->
 					<ul class="product-meta clearfix">
 						<li>
