@@ -17,7 +17,7 @@
 
 
 
-/*$(document).ready(function() {
+$(document).ready(function() {
   if ($('.digg_pagination').length) {
     $(window).scroll(function() {
       var url = $('.digg_pagination .next_page').attr('href');
@@ -28,4 +28,4 @@
     });
     return $(window).scroll();
   }
-});*/
+});

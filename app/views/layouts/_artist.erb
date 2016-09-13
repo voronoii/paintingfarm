@@ -18,7 +18,13 @@
 					</span>
 				</div>
 				<div class="separator"></div>					
-				<p><%= @profile.etc %></p>
+				<p>
+					<% unless @profile.nil? %>
+						<%= @profile.etc %>
+					<% else %>
+						<h5>미등록</h5>
+					<% end %>					
+				</p>
 				<!-- Project info details -->
 				<!--<ul class="product-meta clearfix">-->
 				<!--	<li>-->
@@ -108,26 +114,26 @@
 			   <div class="separator"></div>
 				
 				<!-- 작품 출품 수-->
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2012</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="4"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2013</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2014</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="1"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2015</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2016</b></h5>
-				</span>
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2012</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="4"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2013</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2014</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="1"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2015</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2016</b></h5>-->
+				<!--</span>-->
 
 			</div><!-- PROJECT DETAILS -->
 			<!-- 이 작가의 다른 작품 -->

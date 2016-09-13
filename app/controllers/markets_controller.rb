@@ -71,7 +71,7 @@ class MarketsController < ApplicationController
     @artist = Artist.find(@market.artist)
     #작가 프로필
     @profile = Profile.find_by(artistid: @market.artist.id)
-    if @profile != nil
+    unless @profile.nil?
       @academics = @profile.academic.split(/\r\n/)
       @awards = @profile.awards.split(/\r\n/)
       @privates = @profile.privateexhibitions.split(/\r\n/)
@@ -80,13 +80,13 @@ class MarketsController < ApplicationController
       @possessions = @profile.possessions.split(/\r\n/)
       @etc = @profile.etc.split(/\r\n/)
     else
-      @academics = "미등록"
-      @awards = "미등록"
-      @privates = "미등록"
-      @teams = "미등록"
-      @fairs = "미등록"
-      @possessions = "미등록"
-      @etc = "미등록"
+      @academics = ['미','등','록']
+      @awards = ['미','등','록']
+      @privates = ['미','등','록']
+      @teams = ['미','등','록']
+      @fairs = ['미','등','록']
+      @possessions = ['미','등','록']
+      @etc = ['미','등','록']
     end
 
   end

@@ -20,7 +20,11 @@
 				</div>
 				<div class="separator"></div>					
 				<p>
-				<%= @profile.etc %>
+				<% unless @profile.nil? %>
+					<%= @profile.etc %>
+				<% else %>
+					<h5>미등록</h5>
+				<% end %>
 				</p>
 				<!-- Project info details -->
 				<!--<ul class="product-meta clearfix">-->
