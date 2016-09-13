@@ -2350,6 +2350,7 @@ text.fired-text {
 .blog-articles-masonry-container{
 	width: 100%;
 	float: left;
+	overflow: hidden;
 }
 .blog-article-masonry{
 	background: #fff;

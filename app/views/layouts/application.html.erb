@@ -87,9 +87,14 @@
 					     <a href="/users/sign_in"><button class="m-btn m-btn-white login-button">로그인</button></a>
 						<% end %>
 						
-						<% if user_signed_in? %>
+						<% if user_signed_in? && current_user.email == "paintingfarm@gmail.com"%>
 						<a href="/markets/new"><button class="m-btn new-button">작품등록</button></a>
 						<% end %>
+						
+						<% if user_signed_in? && current_user.email == "paintingfarm@gmail.com"%>
+						<a href="/mypage/new"><button class="m-btn new-button">프로필등록</button></a>
+						<% end %>
+						
 					</nav>
 				</div>
 				<span class="responsive-trigger"><i class="icon-list2"></i></span>
@@ -138,10 +143,9 @@
 		<div class="container-fluid">
 			<div class="search-modal-wrap">
 				<%= form_tag('/markets', :method => "get", :style => "text-align: right", :class => "form-inline") do %>
-            <!--<input type="text" placeholder="SEARCH" params='search'>-->
-            <%= text_field_tag :search, params[:search], placeholder: '작품명' %><!-- 현재는 작품명만 가능-->
-            <% end %>
-				
+	            <!--<input type="text" placeholder="SEARCH" params='search'>-->
+	            <%= text_field_tag :search, params[:search], placeholder: '작품명' %><!-- 현재는 작품명만 가능-->
+	            <% end %>
 			</div>
 			<div class="close-modal">
 				<i class="icon-cross" id="searchClose"></i>

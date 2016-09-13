@@ -1,0 +1,7 @@
+$('#markets').append('<%= j render @markets %>').masonry({itemSelector : '.blog-article-masonry'});
+<% if @markets.next_page %>
+  $('.digg_pagination').replaceWith('<%= j will_paginate @markets %>');
+<% else %>
+  $(window).off('scroll');
+  $('.digg_pagination').remove();
+<% end %>

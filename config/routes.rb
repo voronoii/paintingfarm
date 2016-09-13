@@ -35,6 +35,9 @@ Rails.application.routes.draw do
   #아티스트
   get 'artists' => 'artists#index'
   get 'artists/show/:id' => 'artists#show'
+  
+  get 'mypage/new'
+  post 'mypage/create'
 
   # get ':controller(/:action(/:id))'
   # post ':controller(/:action(/:id))'

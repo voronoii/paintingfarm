@@ -14,3 +14,18 @@
 //= require jquery_ujs
 //= require_tree .
 //= require tinymce
+
+
+
+/*$(document).ready(function() {
+  if ($('.digg_pagination').length) {
+    $(window).scroll(function() {
+      var url = $('.digg_pagination .next_page').attr('href');
+      if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+        $('.digg_pagination').text("Please Wait...");
+        return $.getScript(url);
+      }
+    });
+    return $(window).scroll();
+  }
+});*/

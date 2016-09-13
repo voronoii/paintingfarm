@@ -60,3 +60,6 @@ gem 'omniauth-facebook'
 gem 'tinymce-rails'
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'tinymce-rails-langs'
+
+#엑셀파일에서 데이터 가져오기
+gem 'roo', '~> 2.4.0'

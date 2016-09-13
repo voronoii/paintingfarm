@@ -14,7 +14,38 @@ class MarketsController < ApplicationController
       
         @markets = imsi.paginate(:page => params[:page])
     else 
-        @markets = Market.all.order('created_at DESC').paginate(:page => params[:page])
+      db_query = "";
+      if params["price_from"]
+        db_query = "price >= " + params["price_from"];
+      else
+        db_query = "price >= 0"
+      end
+      if params["price_to"]
+        db_query = db_query + " AND price <= " + params["price_to"];
+      end
+      if params["width_from"]
+        db_query = db_query + " AND width > " + params["width_from"];
+      end
+      if params["width_to"]
+        db_query = db_query + " AND width > " + params["width_to"];
+      end
+      if params["height_from"]
+        db_query = db_query + " AND height > " + params["height_from"];
+      end
+      if params["height_to"]
+        db_query = db_query + " AND height > " + params["height_to"];
+      end
+      if params["period"]
+        db_query = db_query + " AND year BETWEEN " + params["period"] + " AND " + (params["period"] + 9);
+      end
+      if params["genres"]
+        db_query = db_query + " AND genre IN (0";
+        for genre in params["genres"]
+          db_query = db_query + ", " + genre;
+        end
+        db_query = db_query + ")";
+      end
+      @markets = Market.all.order('created_at DESC').paginate(:page => params[:page])
     end
 
     
@@ -36,8 +67,17 @@ class MarketsController < ApplicationController
     #이 작가의 다른 작품 
     @anothers = current_market.where(artist_id: @market.artist)
     
-    #작가 정보
+    #작가 이름 
     @artist = Artist.find(@market.artist)
+    #작가 프로필
+    @profile = Profile.find_by(artistid: @market.artist.id)
+    @academics = @profile.academic.split(/\r\n/)
+    @awards = @profile.awards.split(/\r\n/)
+    @privates = @profile.privateexhibitions.split(/\r\n/)
+    @teams = @profile.teamexhibitions.split(/\r\n/)
+    @fairs = @profile.artfairs.split(/\r\n/)
+    @possessions = @profile.possessions.split(/\r\n/)
+    @etc = @profile.etc.split(/\r\n/)
 
   end
   

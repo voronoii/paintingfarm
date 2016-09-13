@@ -6,7 +6,7 @@
 			<div class="col-md-4">
 				<div class="single-product-gallrey flexslider">
 					<ul class="slides">
-						<li><img src="https://bit.ly/2bC8APu" style="width: 300px;"></li>
+						<li><img src="/images/user-default.png" style="width: 300px;"></li>
 					</ul>		
 				</div><!--// single-product-gallrey flexslider -->					
 			</div><!-- PRODUCT SLIDER -->
@@ -20,36 +20,49 @@
 				</div>
 				<div class="separator"></div>					
 				<p>
-				단순한 것에서 영감을 받고 즉흥적으로 나의 상상이 소멸되기 전에 빠르게 시각화한다. 
-				이것은 나의 상상일기이며 하나의 놀이 수단이다. 나는 작업이라는 행위에서 오는 즐거움을 잃고 싶지 않다. 
-				어렸을 적 장난감을 좋아했다. 내가 마치 만화영화의 감독이 된 것처럼 장난감마다 역할을 정하고 시나리오를 짰다. 
-				이 오래된 기억은 지금 나의 작업에 뿌리가 되었다.
+				<%= @profile.etc %>
 				</p>
 				<!-- Project info details -->
-				<ul class="product-meta clearfix">
-					<li>
-						<span>직업 :</span>작가
-					</li>
-					<li>
-						<span>출생 :</span>1991
-					</li>
-					<li>
-						<span>장르 :</span>회화
-					</li>						
-				</ul>
+				<!--<ul class="product-meta clearfix">-->
+				<!--	<li>-->
+				<!--		<span>직업 :</span>작가-->
+				<!--	</li>-->
+				<!--	<li>-->
+				<!--		<span>출생 :</span>1991-->
+				<!--	</li>-->
+				<!--	<li>-->
+				<!--		<span>장르 :</span>회화-->
+				<!--	</li>						-->
+				<!--</ul>-->
 			    <div class="separator"></div>	
 				<table class="table table-bordered">
 				   	<tr>
 					   	<td class="active">학력</td>
-					   	<td>성신여자대학교 4학년 재학중</td>
+					   	<td><ul class="m-standard-list">
+					   			<% @academics.each do |a| %>
+					   				<li><%= a %></li>
+					   			<% end %>
+					   		</ul>
+					   	</td>
+					   	
+				   	</tr>
+				   	<tr>
+					   	<td class="active">수상경력</td>
+					   	<td>
+							<ul class="m-standard-list">
+								<% @awards.each do |a| %>
+					   				<li><%= a %></li>
+					   			<% end %>
+							</ul>
+					   	</td>
 				   	</tr>
 				   	<tr>
 					   	<td class="active">개인전</td>
 					   	<td>
 							<ul class="m-standard-list">
-								<li>2016 어쩌구저쩌구전</li>
-								<li>2015 어쩌구저쩌구전</li>
-								<li>2014 어쩌구저쩌구전</li>
+								<% @privates.each do |p| %>
+					   				<li><%= p %></li>
+					   			<% end %>
 							</ul>
 					   	</td>
 				   	</tr>
@@ -57,36 +70,67 @@
 					   	<td class="active">단체전</td>
 					   	<td>
 							<ul class="m-standard-list">
-								<li>2016 어쩌구저쩌구전</li>
-								<li>2015 어쩌구저쩌구전</li>
-								<li>2014 어쩌구저쩌구전</li>
+								<% @teams.each do |t| %>
+					   				<li><%= t %></li>
+					   			<% end %>
 							</ul>
 					   	</td>
 				   	</tr>
+				   	<tr>
+					   	<td class="active">아트페어</td>
+					   	<td>
+							<ul class="m-standard-list">
+								<% @fairs.each do |f| %>
+					   				<li><%= f %></li>
+					   			<% end %>
+							</ul>
+					   	</td>
+				   	</tr>
+				   	<tr>
+					   	<td class="active">소장</td>
+					   	<td>
+							<ul class="m-standard-list">
+								<% @possessions.each do |p| %>
+					   				<li><%= p %></li>
+					   			<% end %>
+							</ul>
+					   	</td>
+				   	</tr>
+				   	<tr>
+					   	<td class="active">기타</td>
+					   	<td>
+							<ul class="m-standard-list">
+								<% @etc.each do |e| %>
+					   				<li><%= e %></li>
+					   			<% end %>
+							</ul>
+					   	</td>
+				   	</tr>
+				   	
 				 </table>
 			   <div class="separator"></div>
 				
 				<!-- 작품 출품 수-->
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2012</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="4"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2013</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2014</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="1"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2015</b></h5>
-				</span>
-				<span class="m-pgs-bar-thin">
-				    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>
-					<h5 class="m-pgs-bar-thin-title"><b>2016</b></h5>
-				</span>
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2012</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="4"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2013</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2014</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="1"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2015</b></h5>-->
+				<!--</span>-->
+				<!--<span class="m-pgs-bar-thin">-->
+				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
+				<!--	<h5 class="m-pgs-bar-thin-title"><b>2016</b></h5>-->
+				<!--</span>-->
 
 			</div><!-- PROJECT DETAILS -->							
 		</div><!--//single-product -->

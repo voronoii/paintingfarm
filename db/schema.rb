@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907053218) do
+ActiveRecord::Schema.define(version: 20160913084738) do
 
   create_table "artists", force: :cascade do |t|
     t.integer  "user_id"
@@ -71,6 +71,19 @@ ActiveRecord::Schema.define(version: 20160907053218) do
     t.text     "image_url",  limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "artistid"
+    t.text     "academic"
+    t.text     "awards"
+    t.text     "privateexhibitions"
+    t.text     "teamexhibitions"
+    t.text     "artfairs"
+    t.text     "possessions"
+    t.text     "etc"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
