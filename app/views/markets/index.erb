@@ -38,13 +38,13 @@
 					<!--// 작품들 -->
 				</div>
 
-				<!--<div class="digg_pagination right">-->
-				    <%# will_paginate @markets, :container => false %>
-				<!--</div>-->
-				<!-- 더보기 -->
-				<div class="col-md-12" style="text-align: center; margin-top: 20px;">
-					<span class="m-btn m-btn-radius m-btn-default m-btn-large" onclick="index.js.erb">작품 더보기</span>
+				<div class="digg_pagination right">
+				    <%= will_paginate @markets, :container => false %>
 				</div>
+				<!-- 더보기 -->
+				<!--<div class="col-md-12" style="text-align: center; margin-top: 20px;">-->
+				<!--	<span class="m-btn m-btn-radius m-btn-default m-btn-large" onclick="index.js.erb">작품 더보기</span>-->
+				<!--</div>-->
 			</div><!-- PRODUCT CONTAINER -->
 			
 			<!-- SHOP SIDEBAR -->
