@@ -11,14 +11,14 @@ Rails.application.routes.draw do
   
   #이벤트
   get 'boards' => 'boards#index'
-  # post '/tinymce_assets' => 'tinymce_assets#create'
+  post '/tinymce_assets' => 'tinymce_assets#create'
   # get 'boards/show/:id' => 'boards#show'
   # get 'boards/edit/:id' => 'boards#edit'
   # post 'boards/update/:id' => 'boards#update'
   # get 'boards/delete/:id' => 'boards#delete'
   # post 'boards/comment/:id' => 'boards#comment'
-  # post 'boards/create_notice' => 'boards#create_notice'
-  # get 'boards/notice' => 'boards#notice'
+  post 'boards/create_notice' => 'boards#create_notice'
+  get 'boards/notice' => 'boards#notice'
 
   #마켓
   get 'markets' => 'markets#index'

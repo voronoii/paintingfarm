@@ -14,6 +14,11 @@
 	********************** -->
 	<section>
 		<div class="container">
+            <div class="col-md-4" align='left'>
+            	<% if user_signed_in? == TRUE && current_user.email == "paintingfarm@gmail.com"%>
+            		<a href='/boards/notice'><button align='left' id='btn1' class="m-btn">공지 작성</button></a>
+                <% end %>
+             </div>
 			<dl class="m-accordion col-md-12">
 			<% @notices.each do |n| %>
 				<dt>
