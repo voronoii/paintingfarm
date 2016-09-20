@@ -87,7 +87,8 @@
 					     <a href="/users/sign_in"><button class="m-btn m-btn-white login-button">로그인</button></a>
 						<% end %>
 						
-						<% if user_signed_in? && current_user.email == "paintingfarm@gmail.com"%>
+						<!-- 개발모드일땐 안우리, 푸시할때 페인팅팜으로 변경 -->
+						<% if user_signed_in? && current_user.email == "awr0607@gmail.com"%>
 						<a href="/markets/new"><button class="m-btn new-button">작품등록</button></a>
 						<% end %>
 						

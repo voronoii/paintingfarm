@@ -17,9 +17,9 @@
 		<div class="container">
 			<div class="product-container col-md-9">
 				<div class="product-container-header col-md-12">
-					<div class="product-result left">
-						<%= page_entries_info @markets %>
-					</div>
+					<!--<div class="product-result left">-->
+						<%#= page_entries_info @markets %>
+					<!--</div>-->
 					<select name="" id="" class="product-filter right">
 						<option value="">최신순</option>
 						<option value="">낮은 가격순</option>
@@ -34,13 +34,11 @@
 					<%= render @markets %>	
 				</div>
 
-				<div class="digg_pagination right">
-				    <%= will_paginate @markets, :container => false %>
-				</div>
-				<!-- 더보기 -->
-				<!--<div class="col-md-12" style="text-align: center; margin-top: 20px;">-->
-				<!--	<span class="m-btn m-btn-radius m-btn-default m-btn-large" onclick="index.js.erb">작품 더보기</span>-->
+				<!-- Change Mouse scroll loading - written by. woori-->
+				<!--<div class="digg_pagination right">-->
+				    <%#= will_paginate @markets, :container => false %>
 				<!--</div>-->
+				
 			</div><!-- PRODUCT CONTAINER -->
 			
 			<!-- SHOP SIDEBAR -->
