@@ -70,7 +70,9 @@ class MarketsController < ApplicationController
     #작가 이름 
     @artist = Artist.find(@market.artist)
     #작가 프로필
-    @profile = Profile.find_by(artistid: @market.artist.id)
+    #@profile = Profile.find_by(artistid: @market.artist.id)
+    #artist와 user아이디의 불일치로 생기는 문제로 인해 잠시 변경
+    @profile = Profile.find_by(artistid: @market.artist.user_id)
     unless @profile.nil?
       @academics = @profile.academic.split(/\r\n/)
       @awards = @profile.awards.split(/\r\n/)
