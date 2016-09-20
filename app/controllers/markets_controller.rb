@@ -69,6 +69,7 @@ class MarketsController < ApplicationController
     
     #작가 이름 
     @artist = Artist.find(@market.artist)
+    #@artist = User.find(@market.user_id)
     #작가 프로필
     @profile = Profile.find_by(artistid: @market.artist.id)
     unless @profile.nil?

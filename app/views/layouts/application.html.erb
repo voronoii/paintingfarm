@@ -92,9 +92,9 @@
 						<a href="/markets/new"><button class="m-btn new-button">작품등록</button></a>
 						<%# end %>
 						
-						<%# if user_signed_in? && current_user.email == "paintingfarm@gmail.com"%>
-						<a href="/mypage/new"><button class="m-btn new-button">프로필등록</button></a>
-						<%# end %>
+						<% if user_signed_in? && current_user.email == "paintingfarm@gmail.com"%>
+							<a href="/mypage/new"><button class="m-btn new-button">이력등록</button></a>
+						<% end %>
 						
 					</nav>
 				</div>

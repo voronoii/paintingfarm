@@ -1345,7 +1345,7 @@ header {
 
 .new-button{
 	margin-top: 16px;
-	margin-left: 10px;
+	/*margin-left: 10px;*/
 }
 
 .login-button{
