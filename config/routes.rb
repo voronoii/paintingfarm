@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   # post 'boards/update/:id' => 'boards#update'
   # get 'boards/delete/:id' => 'boards#delete'
   # post 'boards/comment/:id' => 'boards#comment'
-  post 'boards/create_notice' => 'boards#create_notice'
-  get 'boards/notice' => 'boards#notice'
+  get 'boards/create_notice' => 'boards#notice'
+  post 'boards/create_notice' => 'boards/create_notice'
+  get 'boards/edit_notice/:id' => 'boards#edit_notice'
+  post 'boards/update_notice/:id' => 'boards#update_notice'
+  get 'boards/delete_notice/:id' => 'boards#delete_notice'
 
   #마켓
   get 'markets' => 'markets#index'

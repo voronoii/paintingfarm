@@ -16,7 +16,7 @@
 		<div class="container">
             <div class="col-md-4" align='left'>
             	<% if user_signed_in? == TRUE && current_user.email == "paintingfarm@gmail.com"%>
-            		<a href='/boards/notice'><button align='left' id='btn1' class="m-btn">공지 작성</button></a>
+            		<a href='/boards/create_notice'><button align='left' id='btn1' class="m-btn">공지 작성</button></a><br><br>
                 <% end %>
              </div>
 			<dl class="m-accordion col-md-12">
@@ -25,7 +25,15 @@
 				    <%= n.title %>
 				</dt>
 				<dd>
-					 <%= n.content.html_safe %>			 
+					<% unless n.content.nil? %>
+						<%= n.content.html_safe %>	<br><br>
+		            	<% if user_signed_in? == TRUE && current_user.email == "paintingfarm@gmail.com"%>
+		            		<div id = 'edit'>
+				                    <a href='/boards/edit_notice/<%= n.id %>' style='color:#A0A0A0'>수정하기</a>&nbsp; &nbsp;
+				                    <a href='/boards/delete_notice/<%= n.id %>' style='color:#A0A0A0'>삭제하기</a>
+				            </div>
+		                <% end %>
+		            <% end %>
 				</dd>
 			<% end %>
 			</dl>

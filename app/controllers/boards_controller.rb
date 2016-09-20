@@ -113,5 +113,27 @@ class BoardsController < ApplicationController
     end
     
     
+    def edit_notice
+        @post = Notice.find(params[:id])
+    end
+    
+    
+    
+    def update_notice
+        post = Notice.find(params[:id])
+        post.title = params[:title]
+        post.content = params[:content]
+        post.save
+        redirect_to '/boards'
+    end
+    
+    
+    
+    def delete_notice
+        post = Notice.find(params[:id])
+        post.destroy
+        redirect_to '/boards'
+    end
+    
     
 end

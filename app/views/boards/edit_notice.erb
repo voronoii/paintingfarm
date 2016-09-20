@@ -1,0 +1,16 @@
+<style>
+    #div1 { width: 85%; height: 80%; margin: 80px; padding: 30px;}
+</style>
+
+<div class='container' id='div1'>
+        <form action='/boards/update_notice/<%= @post.id %>' method='POST'>
+            <label for='title'>제목</label>
+            <input class='form-control' type="text" name='title' value='<%= @post.title %>'><br>
+            <label for='content'>작성 내용</label>
+            <textarea class="tinymce" name='content' rows='10' cols='30'><%= @post.content.html_safe %></textarea><br>
+            <%= tinymce %>
+            
+            
+            <button class="btn btn-info" type='submit'>수정</button>
+        </form>
+</div>
