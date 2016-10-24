@@ -3,13 +3,22 @@ class MypageController < ApplicationController
     def index
         @artist = current_user
        
-        if Artist.find(@artist.artist).nil?
-            @counts = 0
-            @arts = nil
-        else 
+        # if Artist.find(current_user).empty?
+        #     @counts = 0
+        #     @arts = nil
+        # else 
+        #     @counts = Market.where("artist_id = ?", @artist.artist).count
+        #     @arts = Market.where(artist_id: @artist.artist)
+        # end
+        
+        if Artist.find_by user_id: current_user.id
             @counts = Market.where("artist_id = ?", @artist.artist).count
             @arts = Market.where(artist_id: @artist.artist)
+        else
+            @counts = 0
+            @arts = nil
         end
+            
     end
     
     def new
@@ -31,6 +40,11 @@ class MypageController < ApplicationController
     end
     
     def delete
+    end
+    
+    
+    def checknick
+        
     end
     
     

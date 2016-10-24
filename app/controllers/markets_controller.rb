@@ -137,13 +137,14 @@ class MarketsController < ApplicationController
   
   def edit #수정하기 폼
     @market = Market.find(params[:id])
+    @genres = Genre.all
   end
   
   def update #수정하기
     m = Market.find(params[:id])
             
     m.update(title: params[:title], price: params[:price], width: params[:width], height: params[:height],
-                  genre_id: params[:genre], year: params[:year], material: params[:material], content: params[:content], artist_id: a.id, image: params[:image])           
+                  genre_id: params[:genre], year: params[:year], material: params[:material], content: params[:content], image: params[:image])           
     flash[:notice] = "작품이 수정되었습니다!"
     redirect_to "/markets/show/#{m.id}"
   end

@@ -51,12 +51,12 @@
 					<!-- sidebar widget -->
 					<li class="search-bar sidebar-widget">
 					<%= form_tag('/markets', :method => "get", :class => "form-inline") do %>
-		            <%= text_field_tag :search, params[:search], placeholder: '작품명' %><!-- 현재는 작품명만 가능-->
+		            <%= text_field_tag :search, params[:search], placeholder: '작품명 또는 작가명' %><!-- 현재는 작품명만 가능-->
 		            <% end %>
 					</li>
 					<!-- sidebar widget -->
 					<li class="categories-widget sidebar-widget">
-						<h3 class="sidebar-widget-title">테마</h3>
+						<h3 class="sidebar-widget-title">장르</h3>
 						<ul id="product-genre-select">
 							<li><a id="genre-0" class="selected">전체</a></li>
 							<li><a id="genre-1" >풍경</a></li>
@@ -71,7 +71,7 @@
 					</li>
 					
 					<li>
-						<h3 class="sidebar-widget-title">속성</h3>
+						<!--<h3 class="sidebar-widget-title">속성</h3>-->
 						<ul>
 							<li>
 								<!-- price 슬라이더 -->

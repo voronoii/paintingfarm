@@ -66,15 +66,8 @@
 							<div class="help-block with-errors"></div>
 						</div>
 						
-						<!--
 						<div class="form-group">
-							<input type="text" id="size" name="size" placeholder="*크기 (ex)140x50cm)" required data-error="필수정보입니다">
-							<div class="help-block with-errors"></div>
-						</div>
-						-->
-						
-						<div class="form-group">
-							<input type="number" id="year" name="year" placeholder="*제작년도" required data-error="필수정보입니다">
+							<input type="number" id="year" name="year" placeholder="*년도"  min="1970" max="<%= Time.now.year %>" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						

@@ -107,7 +107,7 @@
 								<h2 class="portfolio-item-title"><%= r.title%></h2>
 								<div class="portfolio-item-cats">
 									<span><%= r.artist.user.nickname%></span>
-									<span><%= "#{r.genre}, #{r.width}x#{r.height}cm #{r.year}" %></span>
+									<span><%= "#{r.genre.name}, #{r.width}x#{r.height}cm #{r.year}" %></span>
 								</div>
 							</div>
 						</a>
@@ -137,7 +137,7 @@
 								<h2 class="portfolio-item-title"><%= r.title%></h2>
 								<div class="portfolio-item-cats">
 									<span><%= r.artist.user.nickname%></span>
-									<span><%= "#{r.genre}, #{r.width}x#{r.height}cm #{r.year}" %></span>
+									<span><%= "#{r.genre.name}, #{r.width}x#{r.height}cm #{r.year}" %></span>
 								</div>
 							</div>
 						</a>

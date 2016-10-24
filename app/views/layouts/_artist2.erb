@@ -15,7 +15,7 @@
 			<div class="portfolio-project-details col-md-8">
 				<div class="single-product-header">
 					<span class="product-price left">
-						<ins><%= @artist.user.nickname %></ins><!-- 작가이름 -->
+						<ins><a href="/artists/show/<%=@artist.id%>" class="artist_name"><%= @artist.user.nickname %></ins><!-- 작가이름 -->
 					</span>
 				</div>
 				<div class="separator"></div>					

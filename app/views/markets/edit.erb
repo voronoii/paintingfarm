@@ -1,11 +1,12 @@
-<!-- 작품 수정 -->
+<!--this-->
+<!-- 새로운 작품을 업로드 -->
 <!-- *********************
 	CONTACT
 ********************** -->
 <section class="contact grey-bg section-area" id="contact">
 	<div class="container">
 		<div class="heading-wrap col-md-12">
-			<h3 class="section-title">작품수정</h3>
+			<h3 class="section-title">작품업로드</h3>
 			<!--<span class="section-subtitle-m">Drop us some lines.</span>-->
 	        <span class="section-subtitle-info-title">도움말 및 제안사항</span>
             <p class="section-subtitle-info"> 
@@ -31,53 +32,60 @@
 			<div class="col-md-7 col-md-offset-1 wow flipInY" data-wow-delay="1.2s">
 				<div class="contact-form-wrap">
 						<input type="hidden" name="artist" value="<%= @market.artist.user.id %>">
-					
+						<label for="title">*제목</label>
 						<div class="form-group">
-							<input type="text" id="title" name="title" placeholder="*제목" value="<%=@market.title%>" required data-error="필수정보입니다">
-							<div class="help-block with-errors"></div>
-						</div>
-	
-						<div class="form-group">
-							<input type="text" id="price" name="price" placeholder="가격" value="<%=@market.price%>">
-						</div>
-						
-						<div class="form-group">
-							<input type="text" id="width" name="width" placeholder="*폭(cm)" value="<%=@market.width%>" required data-error="필수정보입니다">
+							<input type="text" id="title" name="title" placeholder="*제목" value="<%=@market.title%>">
 							<div class="help-block with-errors"></div>
 						</div>
 						
+						<label for="genre">*장르</label>
 						<div class="form-group">
-							<input type="text" id="height" name="height" placeholder="*높이(cm)" value="<%=@market.height%>" required data-error="필수정보입니다">
+								<select name="genre" id="genre" class="form-control" required data-error="필수정보입니다">
+								  <% @genres.each do |g| %>
+								    <% if @market.genre.name == g.name %>
+								    <option value="<%=g.id%>" selected><%=g.name%></option>
+								  	<% else %>
+								  	<option value="<%=g.id%>"><%=g.name%></option>
+								  	<%end%>
+								  <% end %>
+								</select>							
+							<div class="help-block with-errors"></div>
+						</div>	
+						
+	                    <label for="price">가격</label>
+						<div class="form-group">
+							<input type="number" id="price" name="price" placeholder="가격" value="<%=@market.price%>">
+						</div>
+						
+						<label for="width">*폭(cm)</label>
+						<div class="form-group">
+							<input type="number" id="width" name="width" placeholder="*폭(cm)" value="<%=@market.width%>" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						
-						<!--
+						<label for="height">*높이(cm)</label>
 						<div class="form-group">
-							<input type="text" id="size" name="size" placeholder="*크기 (ex)140x50cm)" required data-error="필수정보입니다">
-							<div class="help-block with-errors"></div>
-						</div>
-						-->
-						
-						<div class="form-group">
-							<input type="text" id="year" name="year" placeholder="*제작년도" value="<%=@market.year%>" required data-error="필수정보입니다">
+							<input type="number" id="height" name="height" placeholder="*높이(cm)" value="<%=@market.height%>" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						
+						<label for="year">*제작년도</label>
 						<div class="form-group">
-							<input type="text" id="genre" name="genre" placeholder="*장르" value="<%=@market.genre%>" data-error="필수정보입니다">
+							<input type="number" id="year" name="year" placeholder="*년도"  min="1970" max="<%= Time.now.year %>" value="<%=@market.year%>" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						
+						<label for="material">*재료</label>
 						<div class="form-group">
-							<input type="text" id="material" name="material" placeholder="*재료"  value="<%=@market.material%>" required data-error="필수정보입니다">
+							<input type="text" id="material" name="material" placeholder="*재료" value="<%=@market.material%>" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>						
 						
+						<label for="content">설명</label>
 						<div class="form-group">
-							<textarea id="content" name="content" placeholder="설명"><%=@market.content%></textarea>
+							<textarea id="content" name="content" placeholder="설명"><%= @market.content %></textarea>
 						</div>
-	
-						<button type="submit" id="form-submit" class="m-btn m-btn-radius m-btn-full m-btn-large">등록</button>
+						<button type="submit" id="form-submit" class="m-btn m-btn-radius m-btn-full m-btn-large">수정하기</button>
 						<div id="msgSubmit" class="submit-msg align-center hidden"></div>
 			
 				</div>
