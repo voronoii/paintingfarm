@@ -429,6 +429,14 @@ select:focus
 	border-top: 1px solid #ddd;
 	margin: 30px 0;
 }
+.separator2{
+	width: 100%;
+	display: block;
+	float: left;
+	height: 0;
+	border-top: 1px solid #ddd;
+	margin: 10px 0px;
+}
 .spacer{
 	border: none;
 	margin: 10px 0;
@@ -702,26 +710,26 @@ select:focus
 	width: 100%;
 	float: left;
 }
-/*.pagination li{*/
-/*	display: inline-block;*/
-/*	margin-left: 3px;*/
-/*}*/
-/*.pagination li a{*/
-/*	border: 1px solid #bbb;*/
-/*	color: #aaa;*/
-/*	display: block;*/
-/*	width: 		 36px;*/
-/*	height: 	 36px;*/
-/*	line-height: 36px;*/
-/*	text-align: center;*/
-/*}*/
-/*.pagination li:hover a{*/
-/*	border-color: #aaa;*/
-/*	color: #888;*/
-/*}*/
-/*.pagination li.active a{*/
-/*	color: #fff;*/
-/*}*/
+.pagination li{
+	display: inline-block;
+	margin-left: 3px;
+}
+.pagination li a{
+	border: 1px solid #bbb;
+	color: #aaa;
+	display: block;
+	width: 		 36px;
+	height: 	 36px;
+	line-height: 36px;
+	text-align: center;
+}
+.pagination li:hover a{
+	border-color: #aaa;
+	color: #888;
+}
+.pagination li.active a{
+	color: #fff;
+}
 
 /* 커스텀 페이지네이션 */
 .digg_pagination {
@@ -734,31 +742,31 @@ select:focus
     float: left;
     margin-right: 1px; }
   .digg_pagination .disabled {
-    color: #999999;
-    border: 1px solid #dddddd; }
+    color: #fff;
+    border: 1px solid #fff; }
   .digg_pagination .current {
     font-style: normal;
     font-weight: bold;
-    background: #ff3878;
+    background: #fff;
     color: white;
-    border: 1px solid #ff3878; }
+    border: 1px solid #fff; }
   .digg_pagination a {
     text-decoration: none;
-    color: #ff3878;
-    border: 1px solid #ff3878; }
+    color: #fff;
+    border: 1px solid #fff; }
     .digg_pagination a:hover, .digg_pagination a:focus {
       color: #000033;
-      border-color: #000033; }
+      border-color: #fff; }
   .digg_pagination .page_info {
-    background: #ff3878;
+    background: #fff;
     color: white;
     padding: 0.4em 0.6em;
     width: 22em;
     margin-bottom: 0.3em;
     text-align: center; }
     .digg_pagination .page_info b {
-      color: #000033;
-      background: #6aa6ed;
+      color: #fff;
+      background: #fff;
       padding: 0.1em 0.25em; }
   .digg_pagination:after {
     content: ".";
@@ -771,20 +779,21 @@ select:focus
   *:first-child + html .digg_pagination {
     overflow: hidden; }
 
+/*안쓰는 것 같아서 우선 주석처리 만약 안쓴다면 삭제할 것 20161013 woori*/
 .apple_pagination {
-  background: #f1f1f1;
-  border: 1px solid #e5e5e5;
+  background: #fff;
+  border: 1px solid #fff;
   text-align: center;
   padding: 1em;
   cursor: default; }
   .apple_pagination a, .apple_pagination span {
     padding: 0.2em 0.3em; }
   .apple_pagination .disabled {
-    color: #aaaaaa; }
+    color: #fff; }
   .apple_pagination .current {
     font-style: normal;
     font-weight: bold;
-    background-color: #bebebe;
+    background-color: #fff;
     display: inline-block;
     width: 1.4em;
     height: 1.4em;
@@ -945,9 +954,8 @@ video.full-video {
 /* 
 *   SEARCH & CART MODALS & LOGIN MODALS
 */
+
 .search-modal,
-.login-modal,
-.signup-modal,
 .cart-modal{
 	background: rgba(0,0,0,.8);
 	display: none;
@@ -958,10 +966,27 @@ video.full-video {
 	left: 0;
 	z-index: 5000;
 }
+.login-modal,
+.signup-modal{
+	background: rgb(0,0,0);
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5000;
+}
 
-.search-modal-wrap,
 .login-modal-wrap,
-.signup-modal-wrap,
+.signup-modal-wrap{
+	position: relative;
+	-webkit-transition: margin-top 0.8s;
+    -moz-transition:    margin-top 0.8s;
+    -o-transition:      margin-top 0.8s;
+    transition:         margin-top 0.8s;
+}
+.search-modal-wrap,
 .cart-modal-wrap{
 	position: relative;
 	-webkit-transition: margin-top 0.8s;
@@ -969,12 +994,11 @@ video.full-video {
     -o-transition:      margin-top 0.8s;
     transition:         margin-top 0.8s;
 }
+
 .search-modal-wrap{
 	width: 80%;
 	margin: 50px 10% 0 10%;
 }
-.login-modal-wrap,
-.signup-modal-wrap,
 .cart-modal-wrap{
 	margin-top: 50px;
 }
@@ -983,7 +1007,7 @@ video.full-video {
 	font-size: 2.7em;
 	font-weight: 400;
 	line-height: 100%;
-	padding: 0;
+	padding: 5px;
 	position: relative;
 }
 .search-modal-wrap:after{
@@ -1005,12 +1029,18 @@ video.full-video {
     right: 0;
 }
 
-.signup-modal-wrap .signup,
-.login-modal-wrap .login,
+
 .cart-modal-wrap .cart{
 	background: #fff;
 	border-radius: 3px;
 	padding: 20px;
+}
+
+.signup-modal-wrap .signup,
+.login-modal-wrap .login{
+	background: #fff;
+	border-radius: 3px;
+	padding: 5px 20px 20px;
 }
 .close-modal{
 	cursor: pointer;
@@ -1434,7 +1464,7 @@ header {
 *** TRANSPARENT HEADERs
 */
 header.transparent{
-	background: transparent;
+	background: rgba(0,0,0,0.6);
 	box-shadow: none;
 }
 header.transparent-dark{
@@ -1802,7 +1832,7 @@ text.fired-text {
 }
 .portfolio-item img{
   width: 100%;
-  height: 300px;
+  height: 100%;
   margin: 0;
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
@@ -2628,9 +2658,17 @@ li.comment{
 .sidebar-widget ul li a{
   color: #666666;
 }
+.artist_name{
+  color: #ff3878 !important;
+}
 .sidebar-widget ul li a:hover{
   color: #444444;
 }
+.sidebar-widget ul li .selected{
+	font-weight: 900;
+	color: #ff3878;
+}
+
 .tags-widget ul li{
   float: left;
   margin: 0;
@@ -2648,6 +2686,8 @@ li.comment{
 .tags-widget ul li a:hover{
   color: #ffffff;
 }
+
+
 .latest-posts-widget .post-time{
 	font-size: .9em;
 	font-style: italic;
@@ -5626,6 +5666,12 @@ you can use the generic selector below, but it's slower:
 	
 }
 
+#image_preview2 img{	
+	width: 40%; 
+	height: auto;
+	
+}
+
 .zoom{
     text-align: center;
     line-height: 100px;
@@ -5709,3 +5755,32 @@ a .dropdown-item:hover{
     cursor : -webkit-grab;
 }
 /*모달관련끝*/
+.or {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  
+  line-height: 50px;
+  text-align: center;
+}
+
+.or::before,
+.or::after {
+  position: absolute;
+  width: 150px;
+  height: 1px;
+  
+  top: 24px;
+  
+  background-color: #aaa;
+  
+  content: '';
+}
+
+.or::before {
+  left: 0;
+}
+
+.or::after {
+  right: 0;
+}

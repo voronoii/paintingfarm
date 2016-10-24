@@ -1,9 +1,21 @@
 var $markets = $('<%= j render @markets %>');
+
+
 var $container = $('.blog-articles-masonry-container');
-$container.append($markets).masonry('appended', $markets);
+$container.imagesLoaded(function(){
+  $container.append($markets).masonry('appended', $markets);
+  $('.blog-articles-masonry-container article').css({"display":"none"});
+  setTimeout(function(){
+    $container.masonry();
+    $('.blog-articles-masonry-container article').css({"display":"block"});
+  }, 100);
+});
+$('.loading').css({"display":"none"});
+
 
 <% if @markets.next_page %>
-  $('.digg_pagination').replaceWith('<%= j will_paginate @markets %>');
+  $('.pagination').remove();
+  $('.digg_pagination').append('<%= j will_paginate @markets %>');
 <% else %>
   $(window).off('scroll');
   $('.digg_pagination').remove();

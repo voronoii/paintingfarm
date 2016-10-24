@@ -29,23 +29,16 @@
 			<!--여기 하단 클래스 옆에다가 data filter 설정해줘야함 8월 24일 우리추가-->
 			<div class="portfolio-item">
 				<a href="/artists/show/<%= artist.id %>">
-					<img src="<%= artist.markets.first.image%>" alt="">
+					<img src="<%= artist.markets.first.image.thumb%>" alt="">
 					<div class="portfolio-item-caption">
 						<h2 class="portfolio-item-title">
 								<%= artist.user.nickname %>							
 						</h2>
-						<!--<div class="portfolio-item-cats">-->
-						<!--	<span>여기다가 무엇을</span>-->
-						<!--	<span>넣어야할까</span>-->
-						<!--</div>-->
 					</div><!--// portfolio-item-caption -->
 				</a>
 			</div>
 			<% end %>
 			<!--// 여기까지 반복 -->	
 			</div><!-- END PORTFOLIO CONTAINER -->
-			<!--<div class="load-more">-->
-			<!--	<a href="" class="m-btn m-btn-large m-btn-default m-btn-radius m-btn-border">더보기</a>-->
-			<!--</div>-->
 		</div><!--// container -->
 	</section>

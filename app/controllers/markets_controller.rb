@@ -1,52 +1,65 @@
 class MarketsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create] #사용자 체크
   def index #작품 모두 보여주기
-   # @markets = Market.paginate(:page => params[:page]) #페이지네이션
     
     #최신작품
-    @recents = Market.all.order('created_at DESC').take(3)
+    @recents = Market.all.order('markets.created_at DESC').take(3)
     
     #추천작품
     @recommends = Market.order("RANDOM()").limit(3)
     
-    if params[:search]
-        imsi = Market.where("title LIKE :s OR content LIKE :s", {s: "%#{params[:search]}%"})
+   
+      db_query = "markets.title is not NULL";
+      db_order = "markets.created_at DESC";
       
-        @markets = imsi.paginate(:page => params[:page])
-    else 
-      db_query = "";
-      if params["price_from"]
-        db_query = "price >= " + params["price_from"];
-      else
-        db_query = "price >= 0"
-      end
-      if params["price_to"]
-        db_query = db_query + " AND price <= " + params["price_to"];
-      end
-      if params["width_from"]
-        db_query = db_query + " AND width > " + params["width_from"];
-      end
-      if params["width_to"]
-        db_query = db_query + " AND width > " + params["width_to"];
-      end
-      if params["height_from"]
-        db_query = db_query + " AND height > " + params["height_from"];
-      end
-      if params["height_to"]
-        db_query = db_query + " AND height > " + params["height_to"];
-      end
+      price_from = params["price_from"] || 0
+      price_to = params["price_to"] || 1000000
+      db_query += " AND (markets.price between " + price_from.to_s + " AND " + price_to.to_s + ")";
+      
+      width_from = params["width_from"] || 0
+      width_to = params["width_to"] || 1000000
+      db_query += " AND (markets.width between " + width_from.to_s + " AND " + width_to.to_s + ")";
+      
+      height_from = params["height_from"] || 0
+      height_to = params["height_to"] || 1000000
+      db_query += " AND (markets.height between " + height_from.to_s + " AND " + height_to.to_s + ")";
+      
+      
       if params["period"]
-        db_query = db_query + " AND year BETWEEN " + params["period"] + " AND " + (params["period"] + 9);
+        db_query = db_query + " AND markets.year BETWEEN " + params["period"] + " AND " + (params["period"] + 9);
       end
-      if params["genres"]
-        db_query = db_query + " AND genre IN (0";
-        for genre in params["genres"]
-          db_query = db_query + ", " + genre;
+      if params["sort"]
+        puts case params["sort"]
+        when "new"
+          db_order = "markets.created_at DESC"
+        when "low_price"
+          db_order = "markets.price ASC"
+        when "high_price"
+          db_order = "markets.price DESC"
         end
-        db_query = db_query + ")";
       end
-      @markets = Market.all.order('created_at DESC').paginate(:page => params[:page])
-    end
+      if params["theme"]
+        db_query += " AND markets.genre_id = " + params["theme"];
+      end
+      if params["year"]
+        db_query = db_query + " AND (markets.year is NULL "
+        for from_year in params["year"]
+          to_year = from_year.to_i + 9
+          db_query += (" OR markets.year between #{from_year} and #{to_year}")
+        end
+        db_query += ")"
+      end
+      
+      if params[:search]
+        #imsi = Market.where("title LIKE :s OR content LIKE :s", {s: "%#{params[:search]}%"})
+        #imsi = Market.joins().where("markets.title LIKE :s OR markets.content LIKE :s OR users.nickname LIKE :s", {s: "%#{params[:search]}%"})
+        db_query += " AND (markets.title LIKE :s OR markets.content LIKE :s OR users.nickname LIKE :s)"
+        @markets = Market.joins("left join users on markets.artist_id = users.id").all.where(db_query, {s: "%#{params[:search]}%"}).order(db_order).paginate(:page => params[:page], per_page: 12)
+        
+      else
+        #한페이지에 12개씩 보여주며, 이후건에 대해서는 스크롤을 내리면 로딩됨(index.js.erb코드) 
+        @markets = Market.all.where(db_query).order(db_order).paginate(:page => params[:page], per_page: 12)
+      end
 
     
   end
@@ -97,26 +110,28 @@ class MarketsController < ApplicationController
   end
   
   def create #작품등록
-  #render text:params
-  #아티스트에, 해당 user_id가 없으면 생성 아니면 기존 정보 이용
-  if Artist.find_by(user_id: params[:artist]).nil?
-    a = Artist.create(user_id: params[:artist])  
-  else a = Artist.find_by(user_id: params[:artist])
-  end
+    # render text:params
+    #아티스트에, 해당 user_id가 없으면 생성 아니면 기존 정보 이용
+    if Artist.find_by(user_id: params[:artist]).nil?
+      a = Artist.create(user_id: params[:artist])  
+    else a = Artist.find_by(user_id: params[:artist])
+    end
+
+    @market = Market.create(title: params[:title], price: params[:price], width: params[:width], height: params[:height],
+                  genre_id: params[:genre], year: params[:year], material: params[:material], content: params[:content], artist_id: a.id, image: params[:image])
+    
+    #안내문구 띄우기
+    flash[:notice] = "작품이 등록되었습니다!"
+    redirect_to "/markets"            
   
-  Market.create(title: params[:title], price: params[:price], width: params[:width], height: params[:height],
-                genre: params[:genre], year: params[:year], material: params[:material], 
-                content: params[:content], artist_id: a.id, image: params[:image])
-                            
-  
-  redirect_to "/markets"
   end
   
   def delete #삭제하기
     m = Market.find(params[:id])
-    m.remove_image! #이미지파일삭제
-    m.destroy #테이블삭제
-        
+    if m.destroy #테이블삭제
+      m.remove_image! #이미지파일삭제
+    end
+    flash[:notice] = "작품이 삭제되었습니다!"    
     redirect_to '/markets'
   end
   
@@ -126,13 +141,10 @@ class MarketsController < ApplicationController
   
   def update #수정하기
     m = Market.find(params[:id])
-    #m.remove_image! #수정시에도 기존에 있던 이미지파일은 삭제
-    
+            
     m.update(title: params[:title], price: params[:price], width: params[:width], height: params[:height],
-            genre: params[:genre], year: params[:year], material: params[:material], 
-            content: params[:content], image: params[:image])
-    m.save
-    
+                  genre_id: params[:genre], year: params[:year], material: params[:material], content: params[:content], artist_id: a.id, image: params[:image])           
+    flash[:notice] = "작품이 수정되었습니다!"
     redirect_to "/markets/show/#{m.id}"
   end
 
@@ -196,6 +208,5 @@ class MarketsController < ApplicationController
     ContactGallery.send_email(sender, email, message, m_id, m_title, m_artist).deliver_now
     redirect_to :back
   end
-
   
 end

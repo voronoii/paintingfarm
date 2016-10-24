@@ -48,6 +48,8 @@ group :development do
   gem 'spring'
 end
 
+gem 'mini_magick'
+#gem 'rmagick'
 gem 'devise'
 gem 'hirb-unicode'
 gem 'carrierwave'

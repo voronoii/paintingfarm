@@ -5,10 +5,9 @@ class CreateMarkets < ActiveRecord::Migration
       
       #Artwork detail
       t.string :title
-      t.string :price
-      t.string :size
-      t.string :genre
-      t.string :year
+      t.integer :price
+      t.integer :genre_id
+      t.integer :year
       t.string :material
       
       #Artwork 설명

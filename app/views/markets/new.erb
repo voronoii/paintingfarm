@@ -23,7 +23,8 @@
 				<div class="form-group">
 					<div class="custom-file-upload">
 					    <label for="image">이미지파일을 선택하여 주세요</label>
-					    <input type="file" id="image" name="image"/>
+					    <input type="file" id="image" name="image" required data-error="필수입니다"/>
+					    <div class="help-block with-errors"></div>
 					</div>
 				</div>			    
 			</div><!--// fadeInUp -->
@@ -33,21 +34,35 @@
 						<input type="hidden" name="artist" value="<%= current_user.id %>">
 					
 						<div class="form-group">
-							<input type="text" id="title" name="title" placeholder="*제목" required data-error="필수정보입니다">
+							<input type="text" id="title" name="title" placeholder="*제목">
 							<div class="help-block with-errors"></div>
 						</div>
+						
+						<div class="form-group">
+								<select name="genre" class="form-control" required data-error="필수정보입니다">
+								  <option value="1">풍경</option>
+								  <option value="2">인물</option>
+								  <option value="3">정물</option>
+								  <option value="4">동물</option>
+								  <option value="5">추상</option>
+								  <option value="6">공간</option>
+								  <option value="7">팝아트</option>
+								  <option value="8">기타</option>
+								</select>							
+							<div class="help-block with-errors"></div>
+						</div>						
 	
 						<div class="form-group">
-							<input type="text" id="price" name="price" placeholder="가격">
+							<input type="number" id="price" name="price" placeholder="가격">
 						</div>
 						
 						<div class="form-group">
-							<input type="text" id="width" name="width" placeholder="*폭(cm)" required data-error="필수정보입니다">
+							<input type="number" id="width" name="width" placeholder="*폭(cm)" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						
 						<div class="form-group">
-							<input type="text" id="height" name="height" placeholder="*높이(cm)" required data-error="필수정보입니다">
+							<input type="number" id="height" name="height" placeholder="*높이(cm)" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						
@@ -59,14 +74,10 @@
 						-->
 						
 						<div class="form-group">
-							<input type="text" id="year" name="year" placeholder="*제작년도" required data-error="필수정보입니다">
+							<input type="number" id="year" name="year" placeholder="*제작년도" required data-error="필수정보입니다">
 							<div class="help-block with-errors"></div>
 						</div>
 						
-						<div class="form-group">
-							<input type="text" id="genre" name="genre" placeholder="*장르" required data-error="필수정보입니다">
-							<div class="help-block with-errors"></div>
-						</div>
 						
 						<div class="form-group">
 							<input type="text" id="material" name="material" placeholder="*재료" required data-error="필수정보입니다">
@@ -76,7 +87,6 @@
 						<div class="form-group">
 							<textarea id="content" name="content" placeholder="설명"></textarea>
 						</div>
-	
 						<button type="submit" id="form-submit" class="m-btn m-btn-radius m-btn-full m-btn-large">등록</button>
 						<div id="msgSubmit" class="submit-msg align-center hidden"></div>
 			

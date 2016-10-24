@@ -15,6 +15,7 @@ class HomeController < ApplicationController
     
     
     ContactGallery.send_email2(sender, email, message).deliver_now
+    flash[:notice] = "문의내용이 접수되었습니다!"
     redirect_to :back
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913084738) do
+ActiveRecord::Schema.define(version: 20161023152708) do
 
   create_table "artists", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,13 +40,18 @@ ActiveRecord::Schema.define(version: 20160913084738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "markets", force: :cascade do |t|
     t.integer  "artist_id"
     t.string   "title"
-    t.string   "price"
-    t.string   "size"
-    t.string   "genre"
-    t.string   "year"
+    t.integer  "price"
+    t.integer  "genre_id"
+    t.integer  "year"
     t.string   "material"
     t.text     "content"
     t.integer  "like",       default: 0
@@ -101,10 +106,10 @@ ActiveRecord::Schema.define(version: 20160913084738) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
     t.string   "provider"
     t.string   "uid"
     t.string   "image"
+    t.string   "room"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

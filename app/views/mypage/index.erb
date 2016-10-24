@@ -1,0 +1,116 @@
+<!--해결할문제 : 1 프로필이미지 중앙정렬 -->
+<section class="heading-page-section2">
+	<div class="container">
+		<div class="col-md-12">
+			<h1 class="heading-page-title">마이페이지</h1>
+		</div>
+	</div>
+</section>  
+
+<section id="blog" class="content blog-masonry no-pd-b">
+    <div class='col-md-12'>
+        <!--상태 정보-->
+        <div class='col-md-3' style="text-align: center;">
+            <div id="block" style="margin:0 auto;">
+                <!--<img src="/images/user-default.png" style="width: 50px;"><br>-->
+                <H4 style='color:#aaa;'><%= @artist.nickname %></H4>
+                <H4 style='color:#aaa;'><%= @artist.email %></H4>
+                <H4 style='color:#aaa;'>등록작품 수: <%= @counts %></H4>
+            </div>	
+    	</div>
+           
+        <div class='col-md-8'>
+            <!--정보 수정-->
+            <div>
+                <form action='/mypage/update/<%= current_user.id %>' method='POST'>
+                    <H3 style='color:#aaa;'>기본 정보 수정</H3><br>
+                    <!--추후 프로필 이미지 등록 구현 필요-->
+                    <label style='color:#aaa'>닉네임 변경</label>
+                    <input type='text' name='newnick' value='<%= current_user.nickname %>' class='form-control' style='width: 200px;'><br>
+                    <!--<label style='color:#aaa'>비밀번호 변경</label>-->
+                    <!--<input type='password' name='newpwd' class='form-control' style='width: 200px;'><br>-->
+                    <input type='submit' value='수정' class='btn btn-info'>
+                </form>
+            </div>
+            <div class="separator"></div>
+            
+            <!--뷰인어룸 배경사진 등록-->
+            <div>
+                <H3 style='color:#aaa;'>View In A Room 배경사진 등록</H3><br>
+                <form role="form" action="/mypage/create" method="POST" enctype="multipart/form-data">
+    			    <!--선택 이미지 미리보기-->
+    			    <div class='col-md-12'>
+        			    <div class='col-md-6' id="image_preview">
+        			        <% unless current_user.room.blank? %>
+        			            <%= image_tag(current_user.room) %>   
+        			        <% else %>
+        			            <img src="/images/no-pic.png"/>
+        			        <% end %>
+        			    </div>			
+        				<div class="col-md-6 form-group">
+        					<div class="custom-file-upload">
+        					    <label for="image">이미지파일 선택</label>
+        					    <input type="file" id="image" name="image" style="width: 150px;" required data-error="필수 입니다"/>
+        					    <div class="help-block with-errors"></div>
+        					</div>
+        				</div>
+        			</div>
+                    <input type="hidden" value="<%= current_user.id %>" name="user_id">
+					<% if current_user.room.blank? %>
+					<button type="submit" id="form-submit" class="m-btn m-btn-radius m-btn-full m-btn-black right" style="margin-top:20pt;">배경사진 등록하기</button>       			
+    		        <% else %>
+    		       <button type="submit" id="form-submit" class="m-btn m-btn-radius m-btn-full m-btn-black right" style="margin-top:20pt;">배경사진 재등록하기</button>
+    		        <% end %>
+    			</form>
+            </div>
+            <div class="separator"></div>
+            
+            <!--나의 작품 목록-->
+            <div>
+                <H3 style='color:#aaa;'>나의 작품 목록</H3>
+                
+                <% if @arts.empty? %>
+                    <br><h3 style='color:#ff3878;'><center>등록한 작품이 없습니다.</center></h3>
+                <% else %>
+                    <div class="portfolio-container portfolio-gutters-3">
+        			<% @arts.each do |art| %>
+            			<div class="portfolio-item">
+            				<a href="/markets/show/<%= art.id %>">
+            					<img src="<%= art.image.thumb %>" alt="">
+            					<div class="portfolio-item-caption">
+            						<h2 class="portfolio-item-title">
+            								<%= art.title %>							
+            						</h2>
+            					</div>
+            				</a>
+            			</div>
+        			<% end %>
+        			<!--// 여기까지 반복 -->	
+        		</div>
+                <% end %>
+            </div>
+            
+        </div>
+    
+    </div>
+</section>
+
+<script type="text/javascript">
+
+	$('#image').on('change', function() {
+	    ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	        
+	    //배열에 추출한 확장자가 존재하는지 체크
+	    if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg', 'avi']) == -1) {
+	        resetFormElement($(this)); //폼 초기화
+	        window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+	    } else {
+	        file = $('#image').prop("files")[0];
+	        blobURL = window.URL.createObjectURL(file);
+	        $('#image_preview img').attr('src', blobURL);
+	        $('#image_preview').slideDown(); //업로드한 이미지 미리보기 
+	        $(this).slideUp(); //파일 양식 감춤
+	    } 
+	});
+
+</script>

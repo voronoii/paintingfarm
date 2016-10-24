@@ -27,7 +27,9 @@
 					<div class="single-product-gallrey flexslider">
 						<ul class="slides">
 							<li>
-								<%= image_tag(@market.image) %>
+								<center>
+								<%= image_tag(@market.image.large) %>
+								</center>
 							</li>
 						</ul>	
 						<div class="zoom">	
@@ -45,12 +47,14 @@
 							      <div class="modal-header">
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							        <h5 class="modal-title" id="myModalLabel">
-							        	마우스를 드래그하여 작품을 움직여보세요
+							        	마우스를 드래그하여 작품을 움직여보세요!
 									</h5>
 							      </div>
 							      <div class="modal-body">
 							      	<div class="dragscroll">
-							      		<img id="modal-image" src="<%=@market_img_url%>">
+							      		<center>
+							      			<img id="modal-image" src="<%=@market.image%>">
+							      		</center>
 							      	</div>
 							      </div>
 							    </div>
@@ -80,7 +84,7 @@
 							<span>사이즈 :</span><%= @market.width %> x <%= @market.height =%> (cm)
 						</li>
 						<li>
-							<span>장르 :</span><%= @market.genre %>
+							<span>장르 :</span><%= @market.genre.name %>
 						</li>
 						<li>
 							<span>재료 :</span><%= @market.material %>
@@ -94,26 +98,25 @@
 					<!-- 갤러리 컨택 구현완료 8월 31일-->
 					<form data-toggle="validator" action="/markets/email_send" method="POST">
 						<div class="form-group">
-							<input type="text" name="sender" placeholder="Your full name" required data-error="NEW ERROR MESSAGE">
+							<input type="text" name="sender" placeholder="이름" required data-error="NEW ERROR MESSAGE">
 							<div class="help-block with-errors"></div>
 						</div>
 
 						<div class="form-group">
-							<input type="email" name="email" placeholder="Your email address" required>
+							<input type="email" name="email" placeholder="example@example.com" required>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">
-							<textarea name="message" required>Hi, I’m interested in purchasing this work. Could you please provide more information about the piece?</textarea>
+							<textarea name="message" required>안녕하세요! 작가님의 작품이 정말 마음에 들어요. 더 많은 정보를 알 수 있나요?</textarea>
 							<div class="help-block with-errors"></div>
 						</div>
 							<input type="hidden" name="market_id" value="<%= @market.id %>">
 							<input type="hidden" name="market_title" value="<%= @market.title %>">
 							<input type="hidden" name="market_artist" value="<%= @market.artist.user.nickname %>">
-						<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">Contact Gallery</button>
+						<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">갤러리에게 문의하기</button>
 					</form>
 					<% if user_signed_in? %>
-						<% if current_user.email == "paintingfarm@gmail.com" %>
-						<%#= if current_user.id == 19  %>
+						<% if current_user.email == @market.artist.user.email %>
 						<!--작품 수정 및 삭제 버튼-->
 						<div class="separator"></div>
 						<a href="/markets/edit/<%= @market.id %>" class="m-btn m-btn-medium">수정하기</a>
@@ -128,7 +131,7 @@
 				<div class="col-md-12">
 					<ul class="m-nav-tabs">
 					    <!--<li class="active"><a class="active" data-tab="#tab1" href="#">Work Detail</a></li>-->
-					    <li class="active"><a class="active" data-tab="#tab2" href="#">Artist</a></li>
+					    <li class="active"><a class="active" data-tab="#tab2" href="#">작가정보</a></li>
 					</ul>
 
 					<div class="m-content-tabs">

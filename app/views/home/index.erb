@@ -102,12 +102,12 @@
 					<!-- portfolio item -->
 					<div class="portfolio-item graphic-design">
 						<a href="/markets/show/<%=r.id%>">
-							<%= image_tag(r.image, width: "300", height: "300")%>
+							<%= image_tag(r.image.thumb)%>
 							<div class="portfolio-item-caption">
 								<h2 class="portfolio-item-title"><%= r.title%></h2>
 								<div class="portfolio-item-cats">
 									<span><%= r.artist.user.nickname%></span>
-									<span><%= "#{r.genre}, #{r.size} #{r.year}" %></span>
+									<span><%= "#{r.genre}, #{r.width}x#{r.height}cm #{r.year}" %></span>
 								</div>
 							</div>
 						</a>
@@ -132,12 +132,12 @@
 					<!-- portfolio item -->
 					<div class="portfolio-item graphic-design">
 						<a href="/markets/show/<%=r.id%>">
-							<%= image_tag(r.image, width: "300", height: "300")%>
+							<%= image_tag(r.image.thumb)%>
 							<div class="portfolio-item-caption">
 								<h2 class="portfolio-item-title"><%= r.title%></h2>
 								<div class="portfolio-item-cats">
 									<span><%= r.artist.user.nickname%></span>
-									<span><%= "#{r.genre}, #{r.size} #{r.year}" %></span>
+									<span><%= "#{r.genre}, #{r.width}x#{r.height}cm #{r.year}" %></span>
 								</div>
 							</div>
 						</a>
@@ -204,20 +204,20 @@
 					<div class="contact-form-wrap">
 						<form data-toggle="validator" action="/home/email_send" method="POST">
 							<div class="form-group">
-								<input type="text" name="sender" placeholder="Your full name" required data-error="NEW ERROR MESSAGE">
+								<input type="text" name="sender" placeholder="이름" required data-error="NEW ERROR MESSAGE">
 								<div class="help-block with-errors"></div>
 							</div>
 	
 							<div class="form-group">
-								<input type="email" name="email" placeholder="Your email address" required>
+								<input type="email" name="email" placeholder="example@example.com" required>
 								<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
-								<textarea name="message" placeholder="message" required></textarea>
+								<textarea name="message" placeholder="문의내용" required></textarea>
 								<div class="help-block with-errors"></div>
 							</div>
 	
-							<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">Contact</button>
+							<button type="submit" class="m-btn m-btn-black m-btn-medium" style="width: 100%;">보내기</button>
 						</form>
 					</div>
 				</div><!--// CONTACT FORM -->

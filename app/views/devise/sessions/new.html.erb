@@ -27,7 +27,7 @@
 </style>
 <div class="login-modal" style="display: block;">
 		<div class="container-fluid">
-			<div class="login-modal-wrap col-md-4 col-md-offset-4" style="margin-top: 180px;">
+			<div class="login-modal-wrap col-md-4 col-md-offset-4" style="margin-top: 140px;">
 				<div class="login">
 				<h1> 로그인 </h1>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -42,34 +42,21 @@
               <%= f.password_field :password, autocomplete: "off", class:"form-control" %>
             </div>
             <br/>
-          <div class="actions" style="float: right;">
-            <%= f.submit "로그인", class:"m-btn m-btn-medium m-btn-default m-btn-radius" %>
+          <div class="actions">
+            <%= f.submit "로그인", class:"m-btn m-btn-medium m-btn-default m-btn-radius btn-block" %>
           </div>
       
         <% end %>
         <div style="margin-top: 10px;">
           <%= render "devise/shared/links" %>
         </div>	
-  
-        <div class="separator"></div>
-        
+        <div class="or">또는</div>
         <a href="/users/auth/facebook" class="btn btn-block btn-social btn-facebook">
           <span class="fa fa-facebook"></span>
           페이스북으로 로그인
-        </a>       
-        <!--<a href="#" class="btn btn-block btn-social btn-twitter" style="margin-top: 5px;">-->
-        <!--  <span class="fa fa-twitter"></span>-->
-        <!--  트위터로 로그인-->
-        <!--</a>         -->
-        
-        <!--<a href="#" class="btn btn-block btn-social btn-google" style="margin-top: 5px;">-->
-        <!--  <span class="fa fa-google"></span>-->
-        <!--  구글로 로그인-->
-        <!--</a>          -->
+        </a>
 				</div><!-- login -->
-			</div>
-			<div class="close-modal">
-				<i class="icon-cross" id="loginClose"></i>
+			  <a class="right white" href="/">홈으로</a>
 			</div>
 		</div>
 	</div>

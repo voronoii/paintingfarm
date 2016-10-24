@@ -33,14 +33,32 @@ Rails.application.routes.draw do
   get 'markets/delete/:id' => 'markets#delete'
   post 'markets/update/:id' => 'markets#update'
   get 'markets/view_in_a_room/:id' => 'markets#view_in_a_room'
-  
+
   
   #아티스트
   get 'artists' => 'artists#index'
   get 'artists/show/:id' => 'artists#show'
   
-  get 'mypage/new'
-  post 'mypage/create'
+  get 'mypage/artist_profile'
+  post 'mypage/artist_profile_create'
+  
+  #마이페이지
+  get 'mypage' => 'mypage#index'
+  get 'mypage/index' => 'mypage#index'
+  post 'mypage/update/:id' => 'mypage#update'
+  post 'mypage/create' => 'mypage#create'
+  
+  
+  #검색결과
+  get 'search_result' => 'search_result#index'
+  get 'search_result/index' => 'search_result#index'
+
+
+
+
+
+
+
 
   # get ':controller(/:action(/:id))'
   # post ':controller(/:action(/:id))'
