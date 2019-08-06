@@ -1,10 +1,8 @@
 class BoardsController < ApplicationController
     def index
         @notices = Notice.all.order('created_at DESC')
-    
     end
-    
-    
+      
     def index_backup #유내가 만든 원래 버전
         if params[:search]
             imsi_posts = Board.where("writer LIKE :s OR title LIKE :s OR content LIKE :s", {s: "%#{params[:search]}%"})
@@ -22,11 +20,8 @@ class BoardsController < ApplicationController
         @notices = Notice.all
     end
     
-    
-    
     def new
     end
-    
     
     
     def create
@@ -36,9 +31,17 @@ class BoardsController < ApplicationController
         post.writer = params[:writer]
         post.writer_id = params[:writer_id]
         post.save
-        redirect_to '/events'
+        redirect_to '/imsi_boards'
     end
     
+    def create_board_notice
+        notice = Notice.new
+        notice.title = params[:title]
+        notice.content = params[:content]
+        notice.writer = params[:admin_id]
+        notice.save
+        redirect_to '/imsi_boards'
+    end
     
     
     def edit
@@ -46,23 +49,20 @@ class BoardsController < ApplicationController
     end
     
     
-    
     def update
         post = Board.find(params[:id])
         post.title = params[:title]
         post.content = params[:content]
         post.save
-        redirect_to '/events/index'
+        redirect_to '/imsi_boards'
     end
-    
     
     
     def delete
         post = Board.find(params[:id])
         post.destroy
-        redirect_to '/events'
+        redirect_to '/imsi_boards'
     end
-
 
 
     def show
@@ -74,7 +74,6 @@ class BoardsController < ApplicationController
         @post = Board.find(params[:id])
         @comments = Comment.where("p_id=?", params[:id])
     end
-    
     
     
     def comment
@@ -90,6 +89,7 @@ class BoardsController < ApplicationController
     end
     
     
+    # 현재 사용중인 이벤트
     
     def notice
     end

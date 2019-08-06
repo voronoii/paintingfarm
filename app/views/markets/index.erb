@@ -3,7 +3,7 @@
 	<!-- *********************
 		INTRO PAGE TITLE
 	********************** -->
-	<section class="heading-page-section" style="background-image:url('../images/bg/home2.jpg');">
+	<section class="heading-page-section" style="background-image:url('../images/bg/home3.jpg');">
 		<div class="container">
 			<div class="col-md-12">
 				<h1 class="heading-page-title">마켓</h1>
@@ -104,7 +104,8 @@
 								  <input class="product-year-select-2000" type="checkbox" name="2000" value="2000"> 2000<br>
 								  <input class="product-year-select-1990" type="checkbox" name="1990" value="1990"> 1990<br>
 								  <input class="product-year-select-1980" type="checkbox" name="1980" value="1980"> 1980<br>
-								  <input class="product-year-select-1970" type="checkbox" name="1970" value="1970"> ~1970<br>
+								  <input class="product-year-select-1970" type="checkbox" name="1970" value="1970"> 1970<br>
+								  <input class="product-year-select-1970_under" type="checkbox" name="1970_under" value="1970_under"> ~1970<br>
 							</li>
 						</ul>
 					</li>
@@ -189,19 +190,16 @@
 	//////// Classifier
 	-->
   <script>
-  var is_loading = false;
+ var is_loading = false;
  var page = 1;
+ var url = location.protocol + '//' + location.host + location.pathname;
+ var search = location.search.substring(1);
+ var params_obj = {};
  $(document).ready(function() {
- 	
  		// Define variables
- 		var url = location.protocol + '//' + location.host + location.pathname;
- 		var search = location.search.substring(1);
- 		var params_obj = {};
  		try{
  			var full_url = decodeURIComponent(window.location.href);
  			var match = full_url.match(/[^=&?]+\s*=\s*[^&#]*/g);
- 			console.log(match);
-			
 			for ( var i = match.length; i--; ) {
 			  var spl = match[i].split("=");
 			  var name = spl[0].replace("[]", "");
@@ -268,6 +266,7 @@
 					$(".product-year-select-1990").attr("checked", false);
 					$(".product-year-select-1980").attr("checked", false);
 					$(".product-year-select-1970").attr("checked", false);
+					$(".product-year-select-1970_under").attr("checked", false);
 				}
 				delete params_obj["year"];
 				clear();
@@ -284,16 +283,11 @@
 				clear();
 				loading(url + "?" + $.param(params_obj));
 			}
-			
-			
 		});
-	
 	
 	
 	  // price 슬라이더
 	try{
-		params_obj["price_from"] = params_obj["price_from"] || 0
-		params_obj["price_to"] = params_obj["price_to"] || 1000000
 		$("#slider-price").slider({
 	      range: true,
 	      min: 0,
@@ -306,19 +300,19 @@
 	        $( "#price" ).val( ui.values[ 0 ] + " ~ " + ui.values[ 1 ] + " (원)" );
 	      },
 	      stop: function(event, ui){
+	      	if (ui.values[0] == 0) delete params_obj["price_from"];
+	      	if (ui.values[1] == 1000000) delete params_obj["price_to"];
 			clear();
 			loading(url + "?" + $.param(params_obj));
 	      }
 	    });
-		$("#slider-price").slider('values', 0, params_obj["price_from"]);
-		$("#slider-price").slider('values', 1, params_obj["price_to"]);
+		$("#slider-price").slider('values', 0, params_obj["price_from"] || 0);
+		$("#slider-price").slider('values', 1, params_obj["price_to"] || 1000000);
 	    $( "#price" ).val( $( "#slider-price" ).slider( "values", 0 ) +
 	      " ~ " + $( "#slider-price" ).slider( "values", 1 ) + "+ (원)" );
 	      
 	      
 	    // width 슬라이더
-		params_obj["width_from"] = params_obj["width_from"] || 0
-		params_obj["width_to"] = params_obj["width_to"] || 200
 		$("#slider-width").slider({
 	      range: true,
 	      min: 0,
@@ -331,19 +325,19 @@
 	        $( "#width" ).val( ui.values[ 0 ] + " ~ " + ui.values[ 1 ] + " (cm)" );
 	      },
 	      stop: function(event, ui){
+	      	if (ui.values[0] == 0) delete params_obj["width_from"];
+	      	if (ui.values[1] == 200) delete params_obj["width_to"];
 			clear();
 			loading(url + "?" + $.param(params_obj));
 	      }
 	    });
-		$("#slider-width").slider('values', 0, params_obj["width_from"]);
-		$("#slider-width").slider('values', 1, params_obj["width_to"]);
+		$("#slider-width").slider('values', 0, params_obj["width_from"] || 0);
+		$("#slider-width").slider('values', 1, params_obj["width_to"] || 200);
 	    $( "#width" ).val( $( "#slider-width" ).slider( "values", 0 ) +
 	      " ~ " + $( "#slider-width" ).slider( "values", 1 ) + "+ (cm)" );
 	      
 	      
 	    // height 슬라이더 
-		params_obj["height_from"] = params_obj["height_from"] || 0
-		params_obj["height_to"] = params_obj["height_to"] || 200
 	    $("#slider-height").slider({
 	      range: true,
 	      min: 0,
@@ -356,12 +350,14 @@
 	        $( "#height" ).val( ui.values[ 0 ] + " ~ " + ui.values[ 1 ] + " (cm)");
 	      },
 	      stop: function(event, ui){
+	      	if (ui.values[0] == 0) delete params_obj["height_from"];
+	      	if (ui.values[1] == 200) delete params_obj["height_to"];
 			clear();
 			loading(url + "?" + $.param(params_obj));
 	      }
 	    });
-	    $("#slider-height").slider('values', 0, params_obj["height_from"]);
-		$("#slider-height").slider('values', 1, params_obj["height_to"]);
+	    $("#slider-height").slider('values', 0, params_obj["height_from"] || 0);
+		$("#slider-height").slider('values', 1, params_obj["height_to"] || 200);
 	    $( "#height" ).val( $( "#slider-height" ).slider( "values", 0 ) +
 	      " ~ " + $( "#slider-height" ).slider( "values", 1 ) + "+ (cm)" );
 	}catch(e){
@@ -372,7 +368,12 @@
      
      // Scroll event
      if ($('.digg_pagination').length) {
-     	$(window).scroll(function(){
+     	set_scroll_event();
+     }
+  	});
+  	
+  	function set_scroll_event(){
+  		$(window).scroll(function(){
      		if (!is_loading){
 			    if ($(window).scrollTop() > $(document).height() - $(window).height() - 80) {
 			    	page += 1;
@@ -380,8 +381,7 @@
 			    }
      		}
      	});
-     }
-  	});
+  	}
   	function loading(url){
   		is_loading = true;
 		setTimeout(function(){
@@ -398,6 +398,8 @@
   		var $blog = $('.blog-articles-masonry-container');
   		$blog.masonry('remove', $('.blog-articles-masonry-container article'));
   		$blog.masonry('destroy');
+  		$(window).off('scroll');
+  		set_scroll_event();
   	}
   </script>
 

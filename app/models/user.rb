@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_one :artist
+  #뷰인어룸 이미지 업로드
   mount_uploader :room, RoomUploader#View in a Room
   
+  #페이스 북 가입-----------------------------------------------
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
@@ -28,9 +30,5 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
-  # def self.user_params
-  #   params.require(:user).permit(:provider, :uid, :email, :password, :name, :image)
-  # end
-
+  #-----------------------------------------------페이스 북 가입 끝
 end

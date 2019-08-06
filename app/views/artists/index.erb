@@ -1,6 +1,3 @@
-	<!-- *********************
-		INTRO PAGE TITLE
-	********************** -->
 	<section class="heading-page-section2">
 		<div class="container">
 			<div class="col-md-12">
@@ -14,31 +11,32 @@
 	********************** -->
 	<section class="portfolio section-area no-pd-b" id="portfolio">
 		<div class="container">
-			<!-- 작가목록 카테고리 필터 -->
+			<!-- 작가목록 카테고리 필터 (등록된 작가 증가시 이름별 필터링 구현 예정)-->
 			<nav class="portfolio-navigation">
 				<ul class="portfolio-filter clearfix" data-option-key="filter">
 					<li><a href="" data-filter="*" class="current-filter">모든 아티스트</a></li>
 					<!--<li><a href="" data-filter=".ga">ㄱ</a></li>-->
 				</ul>
 			</nav>
-		<!-- 작가 항목-->
-		<div class="portfolio-container portfolio-gutters-3">
-			<!-- 이부분이 반복-->
-			<!-- portfolio item -->
-			<% @artists.each do |artist| %>
-			<!--여기 하단 클래스 옆에다가 data filter 설정해줘야함 8월 24일 우리추가-->
-			<div class="portfolio-item">
-				<a href="/artists/show/<%= artist.id %>">
-					<img src="<%= artist.markets.first.image.thumb%>" alt="">
-					<div class="portfolio-item-caption">
-						<h2 class="portfolio-item-title">
-								<%= artist.user.nickname %>							
-						</h2>
-					</div><!--// portfolio-item-caption -->
-				</a>
-			</div>
-			<% end %>
-			<!--// 여기까지 반복 -->	
+			
+			<!-- 작가 항목-->
+			<div class="portfolio-container portfolio-gutters-3">
+				<!-- 이부분이 반복-->
+				<!-- portfolio item -->
+				<% @artists.each do |artist| %>
+				<!--여기 하단 클래스 옆에다가 data filter 설정해줘야함 8월 24일 우리추가-->
+				<div class="portfolio-item">
+					<a href="/artists/show/<%= artist.id %>">
+						<img src="<%= artist.markets.first.image.thumb%>" alt="">
+						<div class="portfolio-item-caption">
+							<h2 class="portfolio-item-title">
+									<%= artist.user.nickname %>							
+							</h2>
+						</div><!--// portfolio-item-caption -->
+					</a>
+				</div>
+				<% end %>
+				<!--// 여기까지 반복 -->	
 			</div><!-- END PORTFOLIO CONTAINER -->
 		</div><!--// container -->
 	</section>

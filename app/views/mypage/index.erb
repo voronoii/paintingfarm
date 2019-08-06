@@ -8,27 +8,30 @@
 
 <section id="blog" class="content blog-masonry no-pd-b">
     <div class='col-md-12'>
-        <!--상태 정보-->
+        <!--상태 정보. 사이드바-->
         <div class='col-md-3' style="text-align: center;">
             <div id="block" style="margin:0 auto;">
+                <!--사용자 프로필 이미지는 가입시 등록하지 않으므로 일단 제외-->
                 <!--<img src="/images/user-default.png" style="width: 50px;"><br>-->
+                
                 <H4 style='color:#aaa;'><%= @artist.nickname %></H4>
                 <H4 style='color:#aaa;'><%= @artist.email %></H4>
                 <H4 style='color:#aaa;'>등록작품 수: <%= @counts %></H4>
             </div>	
     	</div>
-           
+        
+        <!--본문-->
         <div class='col-md-8'>
-            <!--정보 수정-->
+            <!--정보 수정 (닉네임, 비밀번호 변경)-->
             <div>
                 <form action='/mypage/update/<%= current_user.id %>' method='POST'>
                     <H3 style='color:#aaa;'>기본 정보 수정</H3><br>
                     <!--추후 프로필 이미지 등록 구현 필요-->
                     <label style='color:#aaa'>닉네임 변경</label>
-                    <input type='text' name='newnick' value='<%= current_user.nickname %>' class='form-control' style='width: 200px;'><br>
+                    <input type='text' id='newnick' data-remote=true name='newnick' value='<%= current_user.nickname %>' class='form-control' style='width: 200px;'><br>
                     <!--<label style='color:#aaa'>비밀번호 변경</label>-->
                     <!--<input type='password' name='newpwd' class='form-control' style='width: 200px;'><br>-->
-                    <input type='submit' value='수정' class='btn btn-info'>
+                    <input type='submit' id='edit' value='수정' class='btn btn-info'>
                 </form>
             </div>
             <div class="separator"></div>
@@ -37,7 +40,7 @@
             <div>
                 <H3 style='color:#aaa;'>View In A Room 배경사진 등록</H3><br>
                 <form role="form" action="/mypage/create" method="POST" enctype="multipart/form-data">
-    			    <!--선택 이미지 미리보기-->
+    			    <!--파일 선택 및 선택 이미지 미리보기-->
     			    <div class='col-md-12'>
         			    <div class='col-md-6' id="image_preview">
         			        <% unless current_user.room.blank? %>
@@ -111,5 +114,6 @@
 	        $(this).slideUp(); //파일 양식 감춤
 	    } 
 	});
+	
 
 </script>
