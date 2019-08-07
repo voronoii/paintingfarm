@@ -3,7 +3,16 @@
             #title { width: 500px; }
             #div1 { width: 85%; height: 80%; margin: 10px 100px; padding: 30px;}
         </style>
-
+        
+        <section class="heading-page-section">
+        	<div class="container">
+        		<div class="col-md-12">
+        			<h1 class="heading-page-title">자유게시판</h1>
+        			<span class="heading-page-subtitle">자유롭게 글을 남겨보세요!</span>
+        		</div>
+        	</div>
+        </section>
+        
         <div class='container'>
             <div class="col-md-offset-4 col-md-4 col-md-offset-4">
                 <h1>공지 작성하기</h1>
@@ -11,7 +20,7 @@
         </div>
         
         <div class='container' id='div1'>
-            <form action='/boards/create_notice' method='POST'>
+            <form action='/boards/notice' method='POST'>
                 
                 <div>
                     <label for='title'>글 제목</label>

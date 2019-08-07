@@ -1,5 +1,6 @@
  <!-- *********************
-	INTRO PAGE TITLE
+	paintingfarm@gmail.com 관리자 로그인시 작가 이력 일괄 등록
+	/layouts/application.html.erb line93
 ********************** -->
 <section class="heading-page-section">
 	<div class="container">
@@ -13,19 +14,12 @@
         <form action='/mypage/artist_profile_create' method='POST'>
             
             작가 아이디 : <input type='text' name='artistid' id='artistid' class='form-control'><br><br>
-            
             학력 : <textarea name='academic' id='academic' class='form-control'></textarea><br><br>
-            
             수상경력 : <textarea type='textarea' name='awards' id='awards' class='form-control'></textarea><br><br>
-            
             개인전 : <textarea type='textarea' name='privates' id='privates' class='form-control'></textarea><br><br>
-            
             단체전 : <textarea type='textarea' name='teams' id='teams' class='form-control'></textarea><br><br>
-            
             아트페어 : <textarea type='textarea' name='fairs' id='fairs' class='form-control'></textarea><br><br>
-            
             소유 : <textarea type='textarea' name='possessions' id='possessions' class='form-control'></textarea><br><br>
-            
             기타 : <textarea type='textarea' name='etc' id='etc' class='form-control'></textarea><br><br>
             
             <input type='submit' value='등록' class='btn btn-info'>

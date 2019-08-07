@@ -1,116 +1,119 @@
-<html>
-    <head>
-        <style>
-            th, td { text-align: center;}
-            #title { text-align: left;}
-            #keyword { width: 180px; }
-            #btn2 { background-color: #ff3878;
-    				color: white;
-    				font-size: 14px;
-    				padding: 5px 10px;
-    				border-radius: 8px;
-    				border: 2px solid #ff3878; }
-            #btn1 { background-color: white;
-    				color: #ff3878;
-    				font-size: 14px;
-    				padding: 5px 10px;
-    				border-radius: 8px;
-   					border: 1px solid #ff3878; }
-   			ul.pagination {  display: flex;
-							 justify-content: center; }
-			ul.pagination li a { color: #ff3878; }
-			
-			ul.pagination li a.active {
-				    background-color: #ff3878;
-				    color: white;
-				}
-        </style>
-    </head>    
-    
-    <body>
-		<!-- *********************
-			CONTENT
-		********************** -->
-		<section id="blog" class="content blog-masonry no-pd-b">
-			<div class="container">
-				<div class='row'>
-	                <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
-	                   
-	                    <div class='container'>
-	                        <div class="row" >
-	                            <div class="col-md-4" align='left'>
-	                            	<% if user_signed_in? == TRUE && current_user.id == 7%>
-	                            		<a href='/boards/notice'><button align='left' id='btn1'>공지 작성</button></a>
-	                                <% end %>
-	                                <a href='/boards/new'><button align='left' id='btn1'>글 작성</button></a>
-	                                &nbsp; &nbsp; 새 글 &nbsp; <b><%= @todays %></b> / <%= @total %>
-	                            </div>
-	                            <div class="col-md-6" style="display: inline;">
-	                                <%= form_tag('/boards/index', :method => "get", :style => "text-align: right", :class => "form-inline") do %>
-	                                <%= text_field_tag :search, params[:search], class: "form-control" %>
-	                                <%= submit_tag "검색",  id: "btn2" %>
-	                                <% end %>
-	                            </div>
-	                        </div><br>
-	                    </div>
-	                    
-	                    <!--*************************게시판 테이블*************************-->
-	                    <table class='table table-hover'>
-	                        <thead>
-	                            <th>글 번호</th> <th align='center'>글 제목</th> <th>작성자</th> <th>작성 시간</th> <th>조회수</th> <th>댓글수</th>
-	                        </thead>
-	                        
-	                        <tbody>
-                            	<% @notices.each do |n| %>
-		                            <tr>
-		                            	<td><b>공지</b></td>
-		                            	<td id='title'><a href='/boards/show_notice/<%= n.id%>' style="color:#ff3878"><b><%= n.title %></b></a></td>
-		                            	<td><b>관리자</b></td>
-		                            	 <td>
-		                                    <% if Time.now.to_s[0, 10] == n.created_at.to_s[0, 10] %>
-		                                        <%= n.created_at.strftime("%H:%M:%S") %>
-		                                    <% else %>
-		                                        <%= n.created_at.strftime("%Y.%m.%d ") %>
-		                                    <% end %>
-		                                </td>
-		                                <td><%= n.views %></td>
-		                                <td></td>
-		                            </tr>
-		                        <% end %>
-		                        
-	                            <% @posts.each do |p| %>
-	                            <tr>
-	                                <td><%= p.id %></td>
-	                                <td id='title'><a href='/boards/show/<%=p.id%>' style="color:#ff3878"><%= p.title %></a></td>
-	                                <td><%= p.writer %></td>
-	                                <td>
-	                                    <% if Time.now.to_s[0, 10] == p.created_at.to_s[0, 10] %>
-	                                        <%= p.created_at.strftime("%H:%M:%S") %>
-	                                    <% else %>
-	                                        <%= p.created_at.strftime("%Y.%m.%d ") %>
-	                                    <% end %>
-	                                </td>
-	                                <td><%= p.views %></td>
-	                                <% if @comments_size[p.id] == nil %>
-	                                    <td>0</td>
-	                                <% else %>
-	                                    <td><%= @comments_size[p.id] %></td>
-	                                <% end %>
-	                            </tr>
-	                        <% end %>
-	                        </tbody>
-	                    </table>
-	                    
-	                    <!--*************************페이징*************************-->
-	                    <div class="navi_warp" style="text-align:center">
-	                        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-	                    </div>
+
+<style>
+    th, td { text-align: center;}
+    #title { text-align: left;}
+    #keyword { width: 180px; }
+    #btn2 { background-color: #ff3878;
+			color: white;
+			font-size: 14px;
+			padding: 5px 10px;
+			border-radius: 8px;
+			border: 2px solid #ff3878; }
+    #btn1 { background-color: white;
+			color: #ff3878;
+			font-size: 14px;
+			padding: 5px 10px;
+			border-radius: 8px;
+   			border: 1px solid #ff3878; }
+   	ul.pagination {  display: flex;
+					 justify-content: center; }
+	ul.pagination li a { color: #ff3878; }
 	
-	                </div>
-            	</div>
-			</div>
-		</section><!-- End Content -->
-    	
-    	
-    </body>
-</html>
+	ul.pagination li a.active {
+		    background-color: #ff3878;
+		    color: white;
+		}
+</style>
+<!-- *********************
+	INTRO PAGE TITLE
+********************** -->
+<section class="heading-page-section">
+	<div class="container">
+		<div class="col-md-12">
+			<h1 class="heading-page-title">자유게시판</h1>
+			<span class="heading-page-subtitle">자유롭게 글을 남겨보세요!</span>
+		</div>
+	</div>
+</section>
+<!-- *********************
+	CONTENT
+********************** -->
+<section id="blog" class="content blog-masonry no-pd-b">
+	<div class="container">
+		<div class='row'>
+            <div class='col-md-offset-1 col-md-10 col-md-offset-1'>
+               
+                <div class='container'>
+                    <div class="row" >
+                        <div class="col-md-4" align='left'>
+                        	<% if user_signed_in? == TRUE && current_user.id == 7%>
+                        		<a href='/boards/notice'><button align='left' id='btn1'>공지 작성</button></a>
+                            <% end %>
+                            <a href='/boards/new'><button align='left' id='btn1'>글 작성</button></a>
+                            &nbsp; &nbsp; 새 글 &nbsp; <b><%= @todays %></b> / <%= @total %>
+                        </div>
+                        <div class="col-md-6" style="display: inline;">
+                            <%= form_tag('/imsi_boards', :method => "get", :style => "text-align: right", :class => "form-inline") do %>
+                            <%= text_field_tag :search, params[:search], class: "form-control" %>
+                            <%= submit_tag "검색",  id: "btn2" %>
+                            <% end %>
+                        </div>
+                    </div><br>
+                </div>
+                
+                <!--*************************게시판 테이블*************************-->
+                <table class='table table-hover'>
+                    <thead>
+                        <th>글 번호</th> <th align='center'>글 제목</th> <th>작성자</th> <th>작성 시간</th> <th>조회수</th> <th>댓글수</th>
+                    </thead>
+                    
+                    <tbody>
+                    	<% @notices.each do |n| %>
+                            <tr>
+                            	<td><b>공지</b></td>
+                            	<td id='title'><a href='/boards/show_notice/<%= n.id%>' style="color:#ff3878"><b><%= n.title %></b></a></td>
+                            	<td><b>관리자</b></td>
+                            	 <td>
+                                    <% if Time.now.to_s[0, 10] == n.created_at.to_s[0, 10] %>
+                                        <%= n.created_at.strftime("%H:%M:%S") %>
+                                    <% else %>
+                                        <%= n.created_at.strftime("%Y.%m.%d ") %>
+                                    <% end %>
+                                </td>
+                                <td><%= n.views %></td>
+                                <td></td>
+                            </tr>
+                        <% end %>
+                        
+                        <% @posts.each do |p| %>
+                        <tr>
+                            <td><%= p.id %></td>
+                            <td id='title'><a href='/boards/show/<%=p.id%>' style="color:#ff3878"><%= p.title %></a></td>
+                            <td><%= p.writer %></td>
+                            <td>
+                                <% if Time.now.to_s[0, 10] == p.created_at.to_s[0, 10] %>
+                                    <%= p.created_at.strftime("%H:%M:%S") %>
+                                <% else %>
+                                    <%= p.created_at.strftime("%Y.%m.%d ") %>
+                                <% end %>
+                            </td>
+                            <td><%= p.views %></td>
+                            <% if @comments_size[p.id] == nil %>
+                                <td>0</td>
+                            <% else %>
+                                <td><%= @comments_size[p.id] %></td>
+                            <% end %>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+                
+                <!--*************************페이징*************************-->
+                <div class="navi_warp" style="text-align:center">
+                    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+                </div>
+
+            </div>
+    	</div>
+	</div>
+</section><!-- End Content -->

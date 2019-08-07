@@ -48,20 +48,20 @@ group :development do
   gem 'spring'
 end
 
-gem 'mini_magick'
-#gem 'rmagick'
-gem 'devise'
-gem 'hirb-unicode'
-gem 'carrierwave'
-gem 'fog-aws'
-gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap'
+gem 'mini_magick' #이미지 crop용
+gem 'devise' #회원가입
+gem 'hirb-unicode' #rails console에서 table모양으로 데이터 뿌리기
+gem 'carrierwave' #파일 업로드
+gem 'fog-aws' #파일 업로드 아마존 aws
+gem 'will_paginate', '~> 3.1.0' #페이지네이션
+gem 'will_paginate-bootstrap' #페이지네이션(프론트단)
 
-gem 'omniauth-facebook'
+gem 'omniauth-facebook' #페이스북 가입하기
 
-gem 'tinymce-rails'
-gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
-gem 'tinymce-rails-langs'
+#편집기----------------------------
+gem 'tinymce-rails' #편집기 (기본)
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta' #편집기의 이미지 업로드 위함
+gem 'tinymce-rails-langs' #편집기 언어
 
 #엑셀파일에서 데이터 가져오기
 gem 'roo', '~> 2.4.0'

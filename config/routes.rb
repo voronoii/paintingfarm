@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # get 'boards/delete/:id' => 'boards#delete'
   # post 'boards/comment/:id' => 'boards#comment'
   get 'boards/create_notice' => 'boards#notice'
-  post 'boards/create_notice' => 'boards/create_notice'
+  post 'boards/create_notice' => 'boards#create_notice'
   get 'boards/edit_notice/:id' => 'boards#edit_notice'
   post 'boards/update_notice/:id' => 'boards#update_notice'
   get 'boards/delete_notice/:id' => 'boards#delete_notice'
@@ -54,6 +54,24 @@ Rails.application.routes.draw do
   get 'search_result/index' => 'search_result#index'
 
 
+
+  #임시자게
+  get 'imsi_boards' => 'boards#index_backup'
+  post '/tinymce_assets' => 'tinymce_assets#create'
+  get 'boards/notice' => 'boards#notice'
+  post 'boards/notice' => 'boards#create_board_notice'
+  get 'boards/new' => 'boards#new'
+  post 'boards/new' => 'boards#new'
+  post 'boards/create'
+  get 'boards/show_notice/:id' => 'boards#show_notice'
+  get 'boards/show/:id' => 'boards#show'
+  get 'boards/edit/:id' => 'boards#edit'
+  post 'boards/update/:id' => 'boards#update'
+  get 'boards/delete/:id' => 'boards#delete'
+  post 'boards/comment/:id' => 'boards#comment'
+  
+  
+ 
 
 
 

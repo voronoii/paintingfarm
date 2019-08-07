@@ -1,4 +1,5 @@
 class ContactGallery < ApplicationMailer
+    #작가와 관련된 문의 메일 보내기
     def send_email sender, email, message, m_id, m_title, m_artist
         mail from: email, #보내는 사람
              to: 'myahn0607@gmail.com', #받는 사람
@@ -7,6 +8,7 @@ class ContactGallery < ApplicationMailer
                    '문의내용: ' + message #내용
     end
     
+    #home/index에서 문의 메일 보내기
     def send_email2 sender, email, message
         mail from: email, #보내는 사람
              to: 'myahn0607@gmail.com', #받는 사람

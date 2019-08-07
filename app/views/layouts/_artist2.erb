@@ -1,4 +1,5 @@
-<!-- 이 작가의 또다른 작품이 없는 버전-->
+<!-- 이 작가의 또다른 작품이 없고,-->
+<!-- _artist.erb와 디자인이 다른 버전 -->
 <section oncontextmenu='return false' id="shop" class="content shop">
 	<div class="container">		
 		<div class="single-product">			
@@ -15,30 +16,21 @@
 			<div class="portfolio-project-details col-md-8">
 				<div class="single-product-header">
 					<span class="product-price left">
-						<ins><a href="/artists/show/<%=@artist.id%>" class="artist_name"><%= @artist.user.nickname %></ins><!-- 작가이름 -->
+						<ins><a href="/artists/show/<%=@artist.id%>" class="artist_name"><%= @artist.user.nickname %></a></ins><!-- 작가이름 -->
 					</span>
 				</div>
-				<div class="separator"></div>					
+				<div class="separator"></div>	
+				
 				<p>
-				<% unless @profile.nil? %>
-					<%= @profile.etc %>
-				<% else %>
-					<h5>미등록</h5>
-				<% end %>
+					<% unless @profile.nil? %>
+						<%= @profile.etc %>
+					<% else %>
+						<h5>미등록</h5>
+					<% end %>
 				</p>
-				<!-- Project info details -->
-				<!--<ul class="product-meta clearfix">-->
-				<!--	<li>-->
-				<!--		<span>직업 :</span>작가-->
-				<!--	</li>-->
-				<!--	<li>-->
-				<!--		<span>출생 :</span>1991-->
-				<!--	</li>-->
-				<!--	<li>-->
-				<!--		<span>장르 :</span>회화-->
-				<!--	</li>						-->
-				<!--</ul>-->
 			    <div class="separator"></div>	
+			    
+			    <!-- Project info details -->
 				<table class="table table-bordered">
 				   	<tr>
 					   	<td class="active">학력</td>
@@ -112,7 +104,7 @@
 				   	</tr>
 				   	
 				 </table>
-			   <div class="separator"></div>
+			   <!--<div class="separator"></div>-->
 				
 				<!-- 작품 출품 수-->
 				<!--<span class="m-pgs-bar-thin">-->
@@ -123,19 +115,7 @@
 				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="4"></span>-->
 				<!--	<h5 class="m-pgs-bar-thin-title"><b>2013</b></h5>-->
 				<!--</span>-->
-				<!--<span class="m-pgs-bar-thin">-->
-				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
-				<!--	<h5 class="m-pgs-bar-thin-title"><b>2014</b></h5>-->
-				<!--</span>-->
-				<!--<span class="m-pgs-bar-thin">-->
-				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="1"></span>-->
-				<!--	<h5 class="m-pgs-bar-thin-title"><b>2015</b></h5>-->
-				<!--</span>-->
-				<!--<span class="m-pgs-bar-thin">-->
-				<!--    <span class="m-pgs-bar-thin-percent m-pgs-bar-color" data-percent="3"></span>-->
-				<!--	<h5 class="m-pgs-bar-thin-title"><b>2016</b></h5>-->
-				<!--</span>-->
-
+				
 			</div><!-- PROJECT DETAILS -->							
 		</div><!--//single-product -->
 	</div><!-- BOX CONTAINER -->
