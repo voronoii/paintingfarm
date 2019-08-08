@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.4.0"
 gem 'mailgun_rails' #메일보내기
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
