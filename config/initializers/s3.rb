@@ -4,7 +4,7 @@ CarrierWave.configure do |config|
   if Rails.env.development? || Rails.env.test?
     CarrierWave.configure do |config|
       #config.storage = :file
-      config.storage = :fog
+      config.for_provider = 'for/aws'
     end
   
     #개발모드일때의 아마존s3 Buckets은 paintingfarm-test임
