@@ -19,13 +19,14 @@ CarrierWave.configure do |config|
       #config.storage = :file
       config.storage = :fog
     end
-    
+
   end
 
   # Use AWS storage if in production
   if Rails.env.production?
     CarrierWave.configure do |config|
       config.storage = :fog
+      config.fog_provider = 'fog/aws'
     end
     
    
