@@ -2,10 +2,7 @@ CarrierWave.configure do |config|
 
   # Use local storage if in development or test
   if Rails.env.development? || Rails.env.test?
-    CarrierWave.configure do |config|
-      #config.storage = :file
-      config.storage = :fog
-    end
+    
   
     #개발모드일때의 아마존s3 Buckets은 paintingfarm-test임
     config.fog_credentials = {
@@ -18,6 +15,11 @@ CarrierWave.configure do |config|
     }
     config.fog_directory  = 'paintingfarm-test'                          # requiredefaults to {}
   end
+
+  CarrierWave.configure do |config|
+      #config.storage = :file
+      config.storage = :fog
+    end
 
   # Use AWS storage if in production
   if Rails.env.production?
