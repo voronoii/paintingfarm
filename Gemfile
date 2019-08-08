@@ -57,7 +57,7 @@ gem 'mini_magick' #이미지 crop용
 gem 'devise' #회원가입
 gem 'hirb-unicode' #rails console에서 table모양으로 데이터 뿌리기
 gem 'carrierwave' #파일 업로드
-# gem 'fog-aws' #파일 업로드 아마존 aws
+gem 'fog-aws' #파일 업로드 아마존 aws
 gem 'will_paginate', '~> 3.1.0' #페이지네이션
 gem 'will_paginate-bootstrap' #페이지네이션(프론트단)
 

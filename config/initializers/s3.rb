@@ -14,12 +14,13 @@ CarrierWave.configure do |config|
       endpoint:              'https://s3.ap-northeast-2.amazonaws.com' # optional, defaults to nil
     }
     config.fog_directory  = 'paintingfarm-test'                          # requiredefaults to {}
-  end
 
-  CarrierWave.configure do |config|
+    CarrierWave.configure do |config|
       #config.storage = :file
       config.storage = :fog
     end
+    
+  end
 
   # Use AWS storage if in production
   if Rails.env.production?
