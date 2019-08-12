@@ -13,7 +13,7 @@ development:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  port: 5432
+  
   host: ec2-23-21-177-102.compute-1.amazonaws.com
   database: des3hes2d4m75n
   user: mgraapelgpcsly
@@ -31,7 +31,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  port: 5432
+  
   host: ec2-23-21-177-102.compute-1.amazonaws.com
   database: des3hes2d4m75n
   user: mgraapelgpcsly
